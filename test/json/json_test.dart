@@ -2,6 +2,7 @@ import 'dart:convert' as json;
 import 'package:djustin/src/model/branch.dart';
 import 'package:djustin/src/model/branch_format.dart';
 import 'package:djustin/src/model/common/locale.dart';
+import 'package:djustin/src/model/service.dart';
 import 'package:djustin/src/model/tracking.dart';
 import 'package:test/test.dart';
 
@@ -15,6 +16,7 @@ void jsonConvertersTest() {
     responseNullResultTest();
     responseBranchTest();
     responseTrackingTest();
+    responseServicesTest();
   });
 }
 
@@ -88,6 +90,7 @@ void responseBranchTest() {
 
     Branch branchFirst = response.results.first;
     expect(branchFirst, isNotNull);
+
     expect(branchFirst.number, 2);
     expect(branchFirst.address, 'Київ, Драйзера вул., 8  (Сільпо)');
     expect(branchFirst.locality, 'Київ');
@@ -146,12 +149,13 @@ void responseTrackingTest() {
     response = converter.fromJson(responseTrackingJson);
   });
 
-  test('Response null result test', () {
+  test('Tracking json response test', () {
     testResponseStaticFieldsOk(response);
     expect(response.results.length, 1);
 
     var tracking = response.results.first;
     expect(tracking, isNotNull);
+
     expect(tracking.orderNumber, 201810165);
     expect(tracking.orderDescription,
         'Замовлення клієнта 201810165 від 25.07.2018');
@@ -159,5 +163,43 @@ void responseTrackingTest() {
     expect(tracking.status, 'Одержано');
     expect(tracking.departmentNumber, isEmpty);
     expect(tracking.departmentAddress, isEmpty);
+  });
+}
+
+final Map<String, dynamic> responseServicesJson =
+    json.jsonDecode(responseServicesRawJson);
+
+void responseServicesTest() {
+  var converter;
+  Response<Service> response;
+
+  setUp(() {
+    converter = ResponseConverter<Service, ServiceConverter>();
+    response = converter.fromJson(responseServicesJson);
+  });
+
+  test('Services json response test', () {
+    testResponseStaticFieldsOk(response);
+    expect(response.results.length, 2);
+
+    var service = response.results.first;
+    expect(service, isNotNull);
+
+    expect(service.id, 'monobank');
+
+    var name = service.name;
+    expect(name[Language.UA], 'Картка "Монобанк"');
+    expect(name[Language.EN], 'Monobank Card');
+    expect(name[Language.RU], 'Карта "Монобанк"');
+
+    var description = service.description;
+    expect(description[Language.UA], 'Можна отримати карту Monobank');
+    expect(description[Language.EN], 'Можна отримати карту Monobank');
+    expect(description[Language.RU], 'Можна отримати карту Monobank');
+
+    expect(service.alias, 'monobank');
+    expect(service.selfService, false);
+    expect(service.categoryService, true);
+    expect(service.sendService, true);
   });
 }

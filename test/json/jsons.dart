@@ -121,3 +121,40 @@ const String responseTrackingRawJson = '''
   ]
 }
 ''';
+
+const String responseServicesRawJson = '''
+{
+    "status": 1,
+    "msg": null,
+    "result": [
+        {
+            "monobank": {
+                "name_ru": "Карта \\"Монобанк\\"",
+                "name_ua": "Картка \\"Монобанк\\"",
+                "name_en": "Monobank Card",
+                "description_ru": "Можна отримати карту Monobank",
+                "description_ua": "Можна отримати карту Monobank",
+                "description_en": "Можна отримати карту Monobank",
+                "alias": "monobank",
+                "self_service": "0",
+                "category_service": "1",
+                "send_service": "1"
+            }
+        },
+        {
+            "cardpay": {
+                "name_ru": "Оплата картой",
+                "name_ua": "Оплата карткою",
+                "name_en": "Card payment",
+                "description_ru": "Є термінал, можна оплатити карткою",
+                "description_ua": "Є термінал, можна оплатити карткою",
+                "description_en": "Card payment",
+                "alias": "cardpay",
+                "self_service": "1",
+                "category_service": "0",
+                "send_service": "1"
+            }
+        }
+     ]
+}
+''';
