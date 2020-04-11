@@ -1,6 +1,6 @@
 import 'package:test/test.dart';
 
-import 'json_test.dart';
+import 'json/json_test.dart';
 
 void main() {
   group('djustin tests', () {
