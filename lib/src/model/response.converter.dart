@@ -2,7 +2,7 @@ part of 'response.dart';
 
 class ResponseConverter<ResultType,
         ResultConverter extends JsonConverter<ResultType>>
-    extends JsonConverter<Response<ResultType>> {
+    implements JsonConverter<Response<ResultType>> {
   ResultConverter resultConverter;
 
   List<ResultType> _parseResults(List<dynamic> json) {
