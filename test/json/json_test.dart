@@ -2,6 +2,7 @@ import 'dart:convert' as json;
 import 'package:djustin/src/model/branch.dart';
 import 'package:djustin/src/model/branch_format.dart';
 import 'package:djustin/src/model/common/locale.dart';
+import 'package:djustin/src/model/tracking.dart';
 import 'package:test/test.dart';
 
 import 'package:djustin/djustin.dart';
@@ -13,6 +14,7 @@ void jsonConvertersTest() {
     responseBranchTypeTest();
     responseNullResultTest();
     responseBranchTest();
+    responseTrackingTest();
   });
 }
 
@@ -117,9 +119,9 @@ void responseBranchTest() {
 
     var description = branchFirst.publicInfo.description;
     expect(description.length, 3);
-    expect(description[Language.UA], '');
-    expect(description[Language.EN], '');
-    expect(description[Language.RU], '');
+    expect(description[Language.UA], isEmpty);
+    expect(description[Language.EN], isEmpty);
+    expect(description[Language.RU], isEmpty);
 
     var navigation = branchFirst.publicInfo.navigation;
     expect(navigation.length, 3);
@@ -129,5 +131,33 @@ void responseBranchTest() {
         "Separate room, entrance from str. Theodore Dreiser, left of ''Silpo''");
     expect(navigation[Language.RU],
         "Отдельное здание, вход с ул. Теодора Драйзера, слева от ''Сильпо''");
+  });
+}
+
+final Map<String, dynamic> responseTrackingJson =
+    json.jsonDecode(responseTrackingRawJson);
+
+void responseTrackingTest() {
+  var converter;
+  Response<Tracking> response;
+
+  setUp(() {
+    converter = ResponseConverter<Tracking, TrackingConverter>();
+    response = converter.fromJson(responseTrackingJson);
+  });
+
+  test('Response null result test', () {
+    testResponseStaticFieldsOk(response);
+    expect(response.results.length, 1);
+
+    var tracking = response.results.first;
+    expect(tracking, isNotNull);
+    expect(tracking.orderNumber, 201810165);
+    expect(tracking.orderDescription,
+        'Замовлення клієнта 201810165 від 25.07.2018');
+    expect(tracking.dateTime, DateTime.parse('2019-02-27 10:20:51'));
+    expect(tracking.status, 'Одержано');
+    expect(tracking.departmentNumber, isEmpty);
+    expect(tracking.departmentAddress, isEmpty);
   });
 }

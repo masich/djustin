@@ -103,3 +103,21 @@ const String responseNullResultRawJson = '''
   },
   "result": null
 }''';
+
+const String responseTrackingRawJson = '''
+{
+  "status": 1,
+  "msg": null,
+  "result": [
+    {
+      "orderNumber":  "201810165",
+      "orderDescription":  "Замовлення клієнта 201810165 від 25.07.2018",
+      "date":  "2019-02-27",
+      "time":  "10:20:51",
+      "status":  "Одержано",
+      "departmentNumber":  "",
+      "departmentAdress":  ""
+    }
+  ]
+}
+''';

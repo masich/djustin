@@ -1,6 +1,6 @@
 part of 'branch_type.dart';
 
-class BranchTypeConverter extends JsonConverter<BranchType> {
+class BranchTypeConverter implements JsonConverter<BranchType> {
   @override
   BranchType fromJson(Map<String, dynamic> json) {
     return BranchType(BranchFormatExtension.fromString(json['short_name']),
