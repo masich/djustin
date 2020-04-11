@@ -1,16 +1,3 @@
-//"monobank": {
-//"name_ru": "Карта \"Монобанк\"",
-//"name_ua": "Картка \"Монобанк\"",
-//"name_en": "Monobank Card",
-//"description_ru": "Можна отримати карту Monobank",
-//"description_ua": "Можна отримати карту Monobank",
-//"description_en": "Можна отримати карту Monobank",
-//"alias": "monobank",
-//"self_service": "0",
-//"category_service": "1",
-//"send_service": "1"
-//}
-
 import 'package:djustin/src/model/common/json_converter.dart';
 import 'package:djustin/src/model/common/locale.dart';
 
