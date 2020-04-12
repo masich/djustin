@@ -11,14 +11,14 @@ class Service {
   final String alias;
 
   // jsonName: self_service
-  final bool selfService;
+  final bool hasSelfService;
 
   // jsonName: category_service
-  final bool categoryService;
+  final bool hasCategoryService;
 
   // jsonName: send_service
-  final bool sendService;
+  final bool hasSendService;
 
-  Service(this.id, this.name, this.description, this.alias, this.selfService,
-      this.categoryService, this.sendService);
+  Service(this.id, this.name, this.description, this.alias, this.hasSelfService,
+      this.hasCategoryService, this.hasSendService);
 }

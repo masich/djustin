@@ -7,13 +7,14 @@ enum BranchFormat {
 }
 
 extension BranchFormatExtension on BranchFormat {
-  static const Map<String, BranchFormat> _mapping = {
-    'MiniOSR': BranchFormat.MINI_OSR,
-    'OSR': BranchFormat.OSR,
-    'SMART': BranchFormat.SMART
+  static const Map<BranchFormat, String> _mapping = {
+    BranchFormat.MINI_OSR: 'MiniOSR',
+    BranchFormat.OSR: 'OSR',
+    BranchFormat.SMART: 'SMART'
   };
 
-  static BranchFormat fromString(String stringFormat) => _mapping[stringFormat];
+  static BranchFormat fromString(String value) =>
+      BranchFormatExtension._mapping.keyForValue(value);
 
-  String string() => BranchFormatExtension._mapping.keyForValue(this);
+  String string() => _mapping[this];
 }

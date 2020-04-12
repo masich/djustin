@@ -1,7 +1,7 @@
 import 'package:djustin/src/model/common/json_converter.dart';
 import 'package:djustin/src/model/common/locale.dart';
 
-import 'package:djustin/src/model/service.dart';
+import 'package:djustin/src/model/service_info.dart';
 
 class ServiceConverter implements JsonConverter<Service> {
   static const String _serviceTrue = '1';

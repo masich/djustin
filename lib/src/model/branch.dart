@@ -26,7 +26,9 @@ class Branch {
   final String scheduleDescription;
 
   final List<Uri> photos;
-  final Map<String, bool> services;
+
+  // jsonName: 'services'
+  final Map<String, bool> servicesAvailability;
 
   // jsonName: 'public'
   final PublicInfo publicInfo;
@@ -44,7 +46,7 @@ class Branch {
       this.description,
       this.scheduleDescription,
       this.photos,
-      this.services,
+      this.servicesAvailability,
       this.publicInfo);
 }
 

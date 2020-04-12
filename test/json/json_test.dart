@@ -6,7 +6,7 @@ import 'jsons.dart';
 import 'package:djustin/src/model/converter/branch_type.converter.dart';
 import 'package:djustin/src/model/converter/response.converter.dart';
 import 'package:djustin/src/model/converter/branch.converter.dart';
-import 'package:djustin/src/model/converter/service.converter.dart';
+import 'package:djustin/src/model/converter/service_info.converter.dart';
 import 'package:djustin/src/model/converter/tracking.converter.dart';
 
 void jsonConvertersTest() {
@@ -109,15 +109,15 @@ void responseBranchTest() {
     expect(branchFirst.photos[1],
         Uri.parse('https://public.justin.ua/img/6883.jpg'));
 
-    expect(branchFirst.services.length, 8);
-    expect(branchFirst.services['monobank'], isTrue);
-    expect(branchFirst.services['cardpay'], isFalse);
-    expect(branchFirst.services['vending'], isFalse);
-    expect(branchFirst.services['remittance'], isFalse);
-    expect(branchFirst.services['fitting'], isFalse);
-    expect(branchFirst.services['3mob'], isTrue);
-    expect(branchFirst.services['uplata'], isTrue);
-    expect(branchFirst.services['joint'], isFalse);
+    expect(branchFirst.servicesAvailability.length, 8);
+    expect(branchFirst.servicesAvailability['monobank'], isTrue);
+    expect(branchFirst.servicesAvailability['cardpay'], isFalse);
+    expect(branchFirst.servicesAvailability['vending'], isFalse);
+    expect(branchFirst.servicesAvailability['remittance'], isFalse);
+    expect(branchFirst.servicesAvailability['fitting'], isFalse);
+    expect(branchFirst.servicesAvailability['3mob'], isTrue);
+    expect(branchFirst.servicesAvailability['uplata'], isTrue);
+    expect(branchFirst.servicesAvailability['joint'], isFalse);
 
     var description = branchFirst.publicInfo.description;
     expect(description.length, 3);
@@ -197,8 +197,8 @@ void responseServicesTest() {
     expect(description[Language.RU], 'Можна отримати карту Monobank');
 
     expect(service.alias, 'monobank');
-    expect(service.selfService, false);
-    expect(service.categoryService, true);
-    expect(service.sendService, true);
+    expect(service.hasSelfService, false);
+    expect(service.hasCategoryService, true);
+    expect(service.hasSendService, true);
   });
 }
