@@ -7,4 +7,12 @@ class BranchType {
   final String description;
 
   BranchType(this.format, this.description);
+
+  @override
+  String toString() {
+    return 'BranchType { '
+        'format: $format, '
+        'description: $description '
+        '}';
+  }
 }

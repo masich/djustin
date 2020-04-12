@@ -21,4 +21,17 @@ class Service {
 
   Service(this.id, this.name, this.description, this.alias, this.hasSelfService,
       this.hasCategoryService, this.hasSendService);
+
+  @override
+  String toString() {
+    return 'Service { '
+        'id: $id, '
+        'name: $name, '
+        'description: $description, '
+        'alias: $alias, '
+        'hasSelfService: $hasSelfService, '
+        'hasCategoryService: $hasCategoryService, '
+        'hasSendService: $hasSendService '
+        '}';
+  }
 }

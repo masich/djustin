@@ -10,4 +10,16 @@ class Tracking {
 
   Tracking(this.orderNumber, this.orderDescription, this.dateTime, this.status,
       this.departmentNumber, this.departmentAddress);
+
+  @override
+  String toString() {
+    return 'Tracking { '
+        'orderNumber: $orderNumber, '
+        'orderDescription: $orderDescription, '
+        'dateTime: $dateTime, '
+        'status: $status, '
+        'departmentNumber: $departmentNumber, '
+        'departmentAddress: $departmentAddress '
+        '}';
+  }
 }

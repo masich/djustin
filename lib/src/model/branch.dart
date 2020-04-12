@@ -48,6 +48,26 @@ class Branch {
       this.photos,
       this.servicesAvailability,
       this.publicInfo);
+
+  @override
+  String toString() {
+    return 'Branch { '
+        'number: $number, '
+        'address: $address, '
+        'locality: $locality, '
+        'type: $type, '
+        'format: $format, '
+        'deliveryBranchId: $deliveryBranchId, '
+        'maxWeight: $maxWeight, '
+        'latitude: $latitude, '
+        'longitude: $longitude, '
+        'description: $description, '
+        'scheduleDescription: $scheduleDescription, '
+        'photos: $photos, '
+        'servicesAvailability: $servicesAvailability, '
+        'publicInfo: $publicInfo '
+        '}';
+  }
 }
 
 class PublicInfo {
@@ -58,4 +78,12 @@ class PublicInfo {
   final Map<Language, String> navigation;
 
   PublicInfo(this.description, this.navigation);
+
+  @override
+  String toString() {
+    return 'PublicInfo {'
+        'description: $description, '
+        'navigation: $navigation '
+        '}';
+  }
 }
