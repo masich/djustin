@@ -1,6 +1,6 @@
 import 'package:djustin/src/model/common/locale.dart';
 
-class Service {
+class ServiceInfo {
   final String id;
 
   // jsonName: name_ua, name_en, name_ru
@@ -19,12 +19,12 @@ class Service {
   // jsonName: send_service
   final bool hasSendService;
 
-  Service(this.id, this.name, this.description, this.alias, this.hasSelfService,
+  ServiceInfo(this.id, this.name, this.description, this.alias, this.hasSelfService,
       this.hasCategoryService, this.hasSendService);
 
   @override
   String toString() {
-    return 'Service { '
+    return 'ServiceInfo { '
         'id: $id, '
         'name: $name, '
         'description: $description, '

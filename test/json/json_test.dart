@@ -150,10 +150,10 @@ void responseTrackingTest() {
 }
 
 void responseServicesTest() {
-  Response<Service> response;
+  Response<ServiceInfo> response;
 
   setUp(() {
-    response = ResponseConverter<Service, ServiceConverter>()
+    response = ResponseConverter<ServiceInfo, ServiceConverter>()
         .fromJsonString(responseServicesRawJson);
   });
 

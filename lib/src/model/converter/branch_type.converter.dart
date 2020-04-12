@@ -1,4 +1,4 @@
-import 'package:djustin/src/model/common/json_converter.dart';
+import 'package:djustin/src/model/converter/json_converter.dart';
 
 import 'package:djustin/src/model/branch_format.dart';
 import 'package:djustin/src/model/branch_type.dart';
