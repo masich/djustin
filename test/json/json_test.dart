@@ -1,13 +1,12 @@
-import 'dart:convert' as json;
-import 'package:test/test.dart';
 import 'package:djustin/djustin.dart';
-
-import 'jsons.dart';
+import 'package:djustin/src/model/converter/branch.converter.dart';
 import 'package:djustin/src/model/converter/branch_type.converter.dart';
 import 'package:djustin/src/model/converter/response.converter.dart';
-import 'package:djustin/src/model/converter/branch.converter.dart';
 import 'package:djustin/src/model/converter/service_info.converter.dart';
 import 'package:djustin/src/model/converter/tracking.converter.dart';
+import 'package:test/test.dart';
+
+import 'jsons.dart';
 
 void jsonConvertersTest() {
   group('Json converters tests', () {
@@ -24,22 +23,19 @@ void testResponseStaticFieldsOk(Response response) {
   expect(response.message, isNull);
 }
 
-final Map<String, dynamic> branchTypeJson = json.jsonDecode(branchTypeRawJson);
-
 void responseBranchTypeTest() {
-  var converter;
-  var response;
+  Response<BranchType> response;
 
   setUp(() {
-    converter = ResponseConverter<BranchType, BranchTypeConverter>();
-    response = converter.fromJson(branchTypeJson);
+    response = ResponseConverter<BranchType, BranchTypeConverter>()
+        .fromJsonString(branchTypeRawJson);
   });
 
   test('BranchType json response test', () {
     testResponseStaticFieldsOk(response);
     expect(response.results.length, 1);
 
-    BranchType branchType = response.results.first;
+    var branchType = response.results.first;
     expect(branchType, isNotNull);
     expect(branchType.format, BranchFormat.SMART);
     expect(branchType.description,
@@ -47,23 +43,18 @@ void responseBranchTypeTest() {
   });
 }
 
-final Map<String, dynamic> responseNullResultJson =
-    json.jsonDecode(responseNullResultRawJson);
-
 void responseNullResultTest() {
-  var converter;
-  var response;
+  Response response;
 
   setUp(() {
-    converter = ResponseConverter();
-    response = converter.fromJson(responseNullResultJson);
+    response = ResponseConverter().fromJsonString(responseNullResultRawJson);
   });
 
   test('Response null result test', () {
     expect(response.status, 0);
     expect(response.message, isNotNull);
 
-    ResponseMessage message = response.message;
+    var message = response.message;
     expect(message.code, 10104);
     var text = message.text;
     expect(text[Language.UA], 'Відділення з вказаним номером не знайдено');
@@ -72,22 +63,19 @@ void responseNullResultTest() {
   });
 }
 
-final Map<String, dynamic> branchJson = json.jsonDecode(branchRawJson);
-
 void responseBranchTest() {
-  ResponseConverter<Branch, BranchConverter> converter;
-  var response;
+  Response<Branch> response;
 
   setUp(() {
-    converter = ResponseConverter<Branch, BranchConverter>();
-    response = converter.fromJson(branchJson);
+    response = ResponseConverter<Branch, BranchConverter>()
+        .fromJsonString(branchRawJson);
   });
 
   test('Branch json response test', () {
     testResponseStaticFieldsOk(response);
     expect(response.results.length, 2);
 
-    Branch branchFirst = response.results.first;
+    var branchFirst = response.results.first;
     expect(branchFirst, isNotNull);
 
     expect(branchFirst.number, 2);
@@ -136,16 +124,12 @@ void responseBranchTest() {
   });
 }
 
-final Map<String, dynamic> responseTrackingJson =
-    json.jsonDecode(responseTrackingRawJson);
-
 void responseTrackingTest() {
-  var converter;
   Response<Tracking> response;
 
   setUp(() {
-    converter = ResponseConverter<Tracking, TrackingConverter>();
-    response = converter.fromJson(responseTrackingJson);
+    response = ResponseConverter<Tracking, TrackingConverter>()
+        .fromJsonString(responseTrackingRawJson);
   });
 
   test('Tracking json response test', () {
@@ -165,16 +149,12 @@ void responseTrackingTest() {
   });
 }
 
-final Map<String, dynamic> responseServicesJson =
-    json.jsonDecode(responseServicesRawJson);
-
 void responseServicesTest() {
-  var converter;
   Response<Service> response;
 
   setUp(() {
-    converter = ResponseConverter<Service, ServiceConverter>();
-    response = converter.fromJson(responseServicesJson);
+    response = ResponseConverter<Service, ServiceConverter>()
+        .fromJsonString(responseServicesRawJson);
   });
 
   test('Services json response test', () {

@@ -1,8 +1,7 @@
 import 'package:djustin/src/model/common/json_converter.dart';
-
 import 'package:djustin/src/model/tracking.dart';
 
-class TrackingConverter implements JsonConverter<Tracking> {
+class TrackingConverter extends JsonConverter<Tracking> {
   @override
   Tracking fromJson(Map<String, dynamic> json) {
     Tracking tracking;

@@ -3,7 +3,7 @@ import 'package:djustin/src/model/common/json_converter.dart';
 import 'package:djustin/src/model/branch_format.dart';
 import 'package:djustin/src/model/branch_type.dart';
 
-class BranchTypeConverter implements JsonConverter<BranchType> {
+class BranchTypeConverter extends JsonConverter<BranchType> {
   @override
   BranchType fromJson(Map<String, dynamic> json) {
     return BranchType(BranchFormatExtension.fromString(json['short_name']),
