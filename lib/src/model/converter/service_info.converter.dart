@@ -1,11 +1,13 @@
-part of 'service.dart';
+import 'package:djustin/src/model/common/locale.dart';
+import 'package:djustin/src/model/converter/json_converter.dart';
+import 'package:djustin/src/model/service_info.dart';
 
-class ServiceConverter implements JsonConverter<Service> {
+class ServiceInfoConverter extends JsonConverter<ServiceInfo> {
   static const String _serviceTrue = '1';
 
   @override
-  Service fromJson(Map<String, dynamic> json) {
-    Service service;
+  ServiceInfo fromJson(Map<String, dynamic> json) {
+    ServiceInfo service;
     if (json != null && json.isNotEmpty) {
       var id = json.keys.first;
       json = json[id];
@@ -21,7 +23,7 @@ class ServiceConverter implements JsonConverter<Service> {
         Language.RU: json['description_ru']
       };
 
-      service = Service(
+      service = ServiceInfo(
           id,
           name,
           description,
@@ -34,7 +36,7 @@ class ServiceConverter implements JsonConverter<Service> {
   }
 
   @override
-  Map<String, dynamic> toJson(Service value) {
+  Map<String, dynamic> toJson(ServiceInfo value) {
     // TODO: implement toJson
     throw UnimplementedError();
   }

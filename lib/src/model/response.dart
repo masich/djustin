@@ -1,8 +1,4 @@
-import 'package:djustin/src/model/common/activator.dart';
 import 'package:djustin/src/model/common/locale.dart';
-import 'package:djustin/src/model/common/json_converter.dart';
-
-part 'response.converter.dart';
 
 class Response<ResultType> {
   final int status;
@@ -14,6 +10,15 @@ class Response<ResultType> {
   final List<ResultType> results;
 
   Response(this.status, this.message, this.results);
+
+  @override
+  String toString() {
+    return 'Response { '
+        'status: $status, '
+        'message: $message, '
+        'results: $results '
+        '}';
+  }
 }
 
 class ResponseMessage {
@@ -23,4 +28,12 @@ class ResponseMessage {
   final Map<Language, String> text;
 
   ResponseMessage(this.code, this.text);
+
+  @override
+  String toString() {
+    return 'ResponseMessage { '
+        'code: $code, '
+        'text: $text '
+        '}';
+  }
 }

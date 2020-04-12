@@ -158,3 +158,71 @@ const String responseServicesRawJson = '''
      ]
 }
 ''';
+
+const String responseLocalitiesRawJson = '''
+{
+    "status": 1,
+    "msg": null,
+    "result": [
+        {
+            "uuid": "82362067-dc04-11e7-80c6-00155dfbfb00",
+            "SCOATOU": "3510300000",
+            "parent_uuid": "17bc2896-dbfe-11e7-80c6-00155dfbfb00",
+            "title_ua": "Олександрія",
+            "parent_title_ua": "Кіровоградська",
+            "title_ru": "Александрия",
+            "parent_title_ru": "Кировоградская",
+            "title_en": "",
+            "parent_title_en": ""
+        },
+        {
+            "uuid": "cbd3a0ee-dc02-11e7-80c6-00155dfbfb00",
+            "SCOATOU": "5120410100",
+            "parent_uuid": "03bec6fe-db50-11e7-80c6-00155dfbfb00",
+            "title_ua": "Арциз",
+            "parent_title_ua": "Одеська",
+            "title_ru": "Арциз",
+            "parent_title_ru": "Одесская",
+            "title_en": "",
+            "parent_title_en": "Odesska"
+        }
+     ]
+}
+''';
+
+const String responseBranchLocatorRawJson = '''
+{
+  "status": 1,
+  "msg": null,
+  "result": [
+    {
+      "number":  "258",
+      "adress":  "Київ, Січових Стрільців вул. , 37/41 (Сільпо)",
+      "locality":  "Київ",
+      "type":  "Відділення",
+      "format":  "SMART",
+      "delivery_branch_id":  "7100110258",
+      "max_weight":  "15",
+      "lat":  "50.456107",
+      "lng":  "30.496798",
+      "description":  "Відділення №258",
+      "shedule_description":  "ПН-НД 08-20",
+      "distance":  1.33
+    },
+    {
+      "number":  "380",
+      "adress":  "Київ, Майдан Незалежності, 1А",
+      "locality":  "Київ",
+      "type":  "Відділення",
+      "format":  "SMART",
+      "delivery_branch_id":  "7100110380",
+      "max_weight":  "15",
+      "lat":  "50.449457",
+      "lng":  "30.5260605",
+      "description":  "Відділення №380",
+      "shedule_description":  "ПН-НД 08-20",
+      "distance":  1.57
+    }
+  ]
+}
+''';

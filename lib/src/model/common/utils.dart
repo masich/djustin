@@ -1,9 +1,10 @@
 extension KeyForValueFinder<Key, Value> on Map<Key, Value> {
-  Key keyForValue(Value value) {
+  Key keyForValue(Value valueToSearch) {
     Key result;
     forEach((key, value) {
-      if (value == this) {
+      if (value == valueToSearch) {
         result = key;
+        return;
       }
     });
     return result;

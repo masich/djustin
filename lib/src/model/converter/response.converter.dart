@@ -1,8 +1,13 @@
-part of 'response.dart';
+import 'package:djustin/src/model/common/activator.dart';
+import 'package:djustin/src/model/common/locale.dart';
+import 'package:djustin/src/model/converter/json_converter.dart';
+import 'package:djustin/src/model/response.dart';
 
 class ResponseConverter<ResultType,
         ResultConverter extends JsonConverter<ResultType>>
-    implements JsonConverter<Response<ResultType>> {
+    extends JsonConverter<Response<ResultType>> {
+  ResponseConverter({this.resultConverter});
+
   ResultConverter resultConverter;
 
   List<ResultType> _parseResults(List<dynamic> json) {

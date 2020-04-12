@@ -1,12 +1,11 @@
-import 'dart:convert' as json;
-import 'package:djustin/src/model/branch.dart';
-import 'package:djustin/src/model/branch_format.dart';
-import 'package:djustin/src/model/common/locale.dart';
-import 'package:djustin/src/model/service.dart';
-import 'package:djustin/src/model/tracking.dart';
-import 'package:test/test.dart';
-
+import 'package:djustin/converters.dart';
 import 'package:djustin/djustin.dart';
+import 'package:djustin/src/model/converter/branch.converter.dart';
+import 'package:djustin/src/model/converter/branch_type.converter.dart';
+import 'package:djustin/src/model/converter/response.converter.dart';
+import 'package:djustin/src/model/converter/service_info.converter.dart';
+import 'package:djustin/src/model/converter/tracking.converter.dart';
+import 'package:test/test.dart';
 
 import 'jsons.dart';
 
@@ -17,6 +16,8 @@ void jsonConvertersTest() {
     responseBranchTest();
     responseTrackingTest();
     responseServicesTest();
+    responseLocalitiesTest();
+    responseBranchLocatorTest();
   });
 }
 
@@ -25,22 +26,19 @@ void testResponseStaticFieldsOk(Response response) {
   expect(response.message, isNull);
 }
 
-final Map<String, dynamic> branchTypeJson = json.jsonDecode(branchTypeRawJson);
-
 void responseBranchTypeTest() {
-  var converter;
-  var response;
+  Response<BranchType> response;
 
   setUp(() {
-    converter = ResponseConverter<BranchType, BranchTypeConverter>();
-    response = converter.fromJson(branchTypeJson);
+    response = ResponseConverter<BranchType, BranchTypeConverter>()
+        .fromJsonString(branchTypeRawJson);
   });
 
   test('BranchType json response test', () {
     testResponseStaticFieldsOk(response);
     expect(response.results.length, 1);
 
-    BranchType branchType = response.results.first;
+    var branchType = response.results.first;
     expect(branchType, isNotNull);
     expect(branchType.format, BranchFormat.SMART);
     expect(branchType.description,
@@ -48,23 +46,18 @@ void responseBranchTypeTest() {
   });
 }
 
-final Map<String, dynamic> responseNullResultJson =
-    json.jsonDecode(responseNullResultRawJson);
-
 void responseNullResultTest() {
-  var converter;
-  var response;
+  Response response;
 
   setUp(() {
-    converter = ResponseConverter();
-    response = converter.fromJson(responseNullResultJson);
+    response = ResponseConverter().fromJsonString(responseNullResultRawJson);
   });
 
   test('Response null result test', () {
     expect(response.status, 0);
     expect(response.message, isNotNull);
 
-    ResponseMessage message = response.message;
+    var message = response.message;
     expect(message.code, 10104);
     var text = message.text;
     expect(text[Language.UA], 'Відділення з вказаним номером не знайдено');
@@ -73,36 +66,33 @@ void responseNullResultTest() {
   });
 }
 
-final Map<String, dynamic> branchJson = json.jsonDecode(branchRawJson);
-
 void responseBranchTest() {
-  ResponseConverter<Branch, BranchConverter> converter;
-  var response;
+  Response<Branch> response;
 
   setUp(() {
-    converter = ResponseConverter<Branch, BranchConverter>();
-    response = converter.fromJson(branchJson);
+    response = ResponseConverter<Branch, BranchConverter>()
+        .fromJsonString(branchRawJson);
   });
 
   test('Branch json response test', () {
     testResponseStaticFieldsOk(response);
     expect(response.results.length, 2);
 
-    Branch branchFirst = response.results.first;
+    var branchFirst = response.results.first;
     expect(branchFirst, isNotNull);
 
-    expect(branchFirst.number, 2);
-    expect(branchFirst.address, 'Київ, Драйзера вул., 8  (Сільпо)');
-    expect(branchFirst.locality, 'Київ');
-    expect(branchFirst.type, 'Відділення');
-    expect(branchFirst.format, BranchFormat.OSR);
-    expect(branchFirst.deliveryBranchId, '7100103004');
-    expect(branchFirst.maxWeight, 30);
-    expect(branchFirst.latitude, '50.5025327');
-    expect(branchFirst.longitude, '30.6051219');
-    expect(branchFirst.description, 'Відділення 2');
-    expect(
-        branchFirst.scheduleDescription, 'ПН-ПТ 10:00-19:00,СБ-НД 11:00-17:00');
+    expect(branchFirst.branchInfo.number, 2);
+    expect(branchFirst.branchInfo.address, 'Київ, Драйзера вул., 8  (Сільпо)');
+    expect(branchFirst.branchInfo.locality, 'Київ');
+    expect(branchFirst.branchInfo.type, 'Відділення');
+    expect(branchFirst.branchInfo.format, BranchFormat.OSR);
+    expect(branchFirst.branchInfo.deliveryBranchId, '7100103004');
+    expect(branchFirst.branchInfo.maxWeight, 30);
+    expect(branchFirst.branchInfo.latitude, '50.5025327');
+    expect(branchFirst.branchInfo.longitude, '30.6051219');
+    expect(branchFirst.branchInfo.description, 'Відділення 2');
+    expect(branchFirst.branchInfo.scheduleDescription,
+        'ПН-ПТ 10:00-19:00,СБ-НД 11:00-17:00');
 
     expect(branchFirst.photos.length, 2);
     expect(branchFirst.photos[0],
@@ -110,15 +100,15 @@ void responseBranchTest() {
     expect(branchFirst.photos[1],
         Uri.parse('https://public.justin.ua/img/6883.jpg'));
 
-    expect(branchFirst.services.length, 8);
-    expect(branchFirst.services['monobank'], isTrue);
-    expect(branchFirst.services['cardpay'], isFalse);
-    expect(branchFirst.services['vending'], isFalse);
-    expect(branchFirst.services['remittance'], isFalse);
-    expect(branchFirst.services['fitting'], isFalse);
-    expect(branchFirst.services['3mob'], isTrue);
-    expect(branchFirst.services['uplata'], isTrue);
-    expect(branchFirst.services['joint'], isFalse);
+    expect(branchFirst.servicesAvailability.length, 8);
+    expect(branchFirst.servicesAvailability['monobank'], isTrue);
+    expect(branchFirst.servicesAvailability['cardpay'], isFalse);
+    expect(branchFirst.servicesAvailability['vending'], isFalse);
+    expect(branchFirst.servicesAvailability['remittance'], isFalse);
+    expect(branchFirst.servicesAvailability['fitting'], isFalse);
+    expect(branchFirst.servicesAvailability['3mob'], isTrue);
+    expect(branchFirst.servicesAvailability['uplata'], isTrue);
+    expect(branchFirst.servicesAvailability['joint'], isFalse);
 
     var description = branchFirst.publicInfo.description;
     expect(description.length, 3);
@@ -137,16 +127,12 @@ void responseBranchTest() {
   });
 }
 
-final Map<String, dynamic> responseTrackingJson =
-    json.jsonDecode(responseTrackingRawJson);
-
 void responseTrackingTest() {
-  var converter;
   Response<Tracking> response;
 
   setUp(() {
-    converter = ResponseConverter<Tracking, TrackingConverter>();
-    response = converter.fromJson(responseTrackingJson);
+    response = ResponseConverter<Tracking, TrackingConverter>()
+        .fromJsonString(responseTrackingRawJson);
   });
 
   test('Tracking json response test', () {
@@ -166,16 +152,12 @@ void responseTrackingTest() {
   });
 }
 
-final Map<String, dynamic> responseServicesJson =
-    json.jsonDecode(responseServicesRawJson);
-
 void responseServicesTest() {
-  var converter;
-  Response<Service> response;
+  Response<ServiceInfo> response;
 
   setUp(() {
-    converter = ResponseConverter<Service, ServiceConverter>();
-    response = converter.fromJson(responseServicesJson);
+    response = ResponseConverter<ServiceInfo, ServiceInfoConverter>()
+        .fromJsonString(responseServicesRawJson);
   });
 
   test('Services json response test', () {
@@ -198,8 +180,68 @@ void responseServicesTest() {
     expect(description[Language.RU], 'Можна отримати карту Monobank');
 
     expect(service.alias, 'monobank');
-    expect(service.selfService, false);
-    expect(service.categoryService, true);
-    expect(service.sendService, true);
+    expect(service.hasSelfService, false);
+    expect(service.hasCategoryService, true);
+    expect(service.hasSendService, true);
+  });
+}
+
+void responseLocalitiesTest() {
+  Response<Locality> response;
+
+  setUp(() {
+    response = ResponseConverter<Locality, LocalityConverter>()
+        .fromJsonString(responseLocalitiesRawJson);
+  });
+
+  test('Localities json response test', () {
+    testResponseStaticFieldsOk(response);
+    expect(response.results.length, 2);
+
+    var locality = response.results.first;
+    expect(locality, isNotNull);
+
+    expect(locality.uuid, '82362067-dc04-11e7-80c6-00155dfbfb00');
+    expect(locality.scoatou, '3510300000');
+    expect(locality.parentUuid, '17bc2896-dbfe-11e7-80c6-00155dfbfb00');
+
+    expect(locality.title[Language.UA], 'Олександрія');
+    expect(locality.title[Language.EN], isEmpty);
+    expect(locality.title[Language.RU], 'Александрия');
+
+    expect(locality.parentTitle[Language.UA], 'Кіровоградська');
+    expect(locality.parentTitle[Language.EN], isEmpty);
+    expect(locality.parentTitle[Language.RU], 'Кировоградская');
+  });
+}
+
+void responseBranchLocatorTest() {
+  Response<BranchLocator> response;
+
+  setUp(() {
+    response = ResponseConverter<BranchLocator, BranchLocatorConverter>()
+        .fromJsonString(responseBranchLocatorRawJson);
+  });
+
+  test('Branch locator json response test', () {
+    testResponseStaticFieldsOk(response);
+    expect(response.results.length, 2);
+
+    var locator = response.results.first;
+    expect(locator, isNotNull);
+
+    expect(locator.branchInfo.number, 258);
+    expect(locator.branchInfo.address,
+        'Київ, Січових Стрільців вул. , 37/41 (Сільпо)');
+    expect(locator.branchInfo.locality, 'Київ');
+    expect(locator.branchInfo.type, 'Відділення');
+    expect(locator.branchInfo.format, BranchFormat.SMART);
+    expect(locator.branchInfo.deliveryBranchId, '7100110258');
+    expect(locator.branchInfo.maxWeight, 15);
+    expect(locator.branchInfo.latitude, '50.456107');
+    expect(locator.branchInfo.longitude, '30.496798');
+    expect(locator.branchInfo.description, 'Відділення №258');
+    expect(locator.branchInfo.scheduleDescription, 'ПН-НД 08-20');
+    expect(locator.distance, 1.33);
   });
 }
