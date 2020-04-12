@@ -4,14 +4,14 @@ import 'package:djustin/src/model/converter/branch_info.converter.dart';
 import 'package:djustin/src/model/converter/json_converter.dart';
 
 class BranchConverter extends JsonConverter<Branch> {
+  static const int _serviceAvailable = 1;
+
   PublicInfoConverter _infoConverter;
   BranchInfoConverter _branchInfoConverter;
 
   static List<Uri> _parsePhotosUrls(List<dynamic> photosUrls) {
     return photosUrls?.map((e) => Uri.parse(e as String))?.toList();
   }
-
-  static const int _serviceAvailable = 1;
 
   static Map<String, bool> _parseServices(Map<String, dynamic> services) {
     return services

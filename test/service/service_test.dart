@@ -6,7 +6,7 @@ void main() {
   group('djustin service tests', () {
     JustinService service;
     setUp(() {
-      service = JustinService(endpointBase: Endpoint.base);
+      service = JustinService();
     });
 
     test('Justin service simple tests', () async {

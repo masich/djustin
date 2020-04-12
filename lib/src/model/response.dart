@@ -1,6 +1,8 @@
 import 'package:djustin/src/model/common/locale.dart';
 
 class Response<ResultType> {
+  static const int statusOk = 1;
+
   final int status;
 
   // jsonName: 'msg'

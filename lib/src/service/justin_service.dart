@@ -17,7 +17,7 @@ class Endpoint {
 }
 
 class JustinService extends Service {
-  JustinService({String endpointBase, http.Client client})
+  JustinService({String endpointBase = Endpoint.base, http.Client client})
       : super(endpointBase: endpointBase, client: client);
 
   Future<Response<BranchType>> getBranchTypes() {
