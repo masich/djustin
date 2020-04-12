@@ -13,12 +13,17 @@ void serviceTest() {
       await requestResponse(service);
       await requestError(service);
     });
+
+    test('Justin service tests', () async {
+      await requestBranchTypes(service);
+    });
   });
 }
 
 void requestResponse(JustinService service) async {
-  var converter = ResponseConverter<BranchType, BranchTypeConverter>();
-  var response = await service.getResponse(Endpoint.branchTypes, converter);
+  var converter = BranchTypeConverter();
+  var response =
+      await service.getResponseDirect(Endpoint.branchTypes, converter);
 
   expect(response, isNotNull);
   expect(response.status, 1);
@@ -28,11 +33,20 @@ void requestResponse(JustinService service) async {
 }
 
 void requestError(JustinService service) async {
-  var converter = ResponseConverter();
-  var response = await service.getResponse('/error_error', converter);
+  var response = await service.getResponseDirect('/error_error', null);
 
   expect(response, isNotNull);
   expect(response.status, 0);
   expect(response.message, isNotNull);
   expect(response.results, isNull);
+}
+
+void requestBranchTypes(JustinService service) async {
+  var response = await service.getBranchTypes();
+
+  expect(response, isNotNull);
+  expect(response.status, 1);
+  expect(response.message, isNull);
+  expect(response.results, isNotNull);
+  expect(response.results.length, 3);
 }
