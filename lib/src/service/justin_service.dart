@@ -7,6 +7,19 @@ import 'package:http/http.dart' as http;
 
 typedef OnErrorCallback = void Function(int statusCode);
 
+class Endpoint {
+  static const String base = 'http://openapi.justin.ua';
+  static const String branches = '/branches';
+  static const String branchTypes = '/branch_types';
+  static const String branchLocator = '/branches_locator';
+  static const String tracking = '/tracking';
+  static const String trackingHistory = '/tracking_history';
+  static const String localities = '/localities';
+  static const String services = '/services';
+
+  Endpoint._();
+}
+
 class JustinService extends Service {
   static const int statusCodeOk = 200;
 

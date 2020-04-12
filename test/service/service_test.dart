@@ -6,7 +6,7 @@ void serviceTest() {
   group('Service tests', () {
     JustinService service;
     setUp(() {
-      service = JustinService(endpointBase: 'http://openapi.justin.ua');
+      service = JustinService(endpointBase: Endpoint.base);
     });
 
     test('Justin service simple tests', () async {
@@ -18,7 +18,7 @@ void serviceTest() {
 
 void requestResponse(JustinService service) async {
   var converter = ResponseConverter<BranchType, BranchTypeConverter>();
-  var response = await service.getResponse('/branch_types', converter);
+  var response = await service.getResponse(Endpoint.branchTypes, converter);
 
   expect(response, isNotNull);
   expect(response.status, 1);
