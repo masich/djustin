@@ -1,3 +1,4 @@
+import 'package:djustin/converters.dart';
 import 'package:djustin/djustin.dart';
 import 'package:djustin/src/model/converter/branch.converter.dart';
 import 'package:djustin/src/model/converter/branch_type.converter.dart';
@@ -15,6 +16,7 @@ void jsonConvertersTest() {
     responseBranchTest();
     responseTrackingTest();
     responseServicesTest();
+    responseLocalitiesTest();
   });
 }
 
@@ -153,7 +155,7 @@ void responseServicesTest() {
   Response<ServiceInfo> response;
 
   setUp(() {
-    response = ResponseConverter<ServiceInfo, ServiceConverter>()
+    response = ResponseConverter<ServiceInfo, ServiceInfoConverter>()
         .fromJsonString(responseServicesRawJson);
   });
 
@@ -180,5 +182,34 @@ void responseServicesTest() {
     expect(service.hasSelfService, false);
     expect(service.hasCategoryService, true);
     expect(service.hasSendService, true);
+  });
+}
+
+void responseLocalitiesTest() {
+  Response<Locality> response;
+
+  setUp(() {
+    response = ResponseConverter<Locality, LocalityConverter>()
+        .fromJsonString(responseLocalitiesRawJson);
+  });
+
+  test('Localities json response test', () {
+    testResponseStaticFieldsOk(response);
+    expect(response.results.length, 2);
+
+    var locality = response.results.first;
+    expect(locality, isNotNull);
+
+    expect(locality.uuid, '82362067-dc04-11e7-80c6-00155dfbfb00');
+    expect(locality.scoatou, '3510300000');
+    expect(locality.parentUuid, '17bc2896-dbfe-11e7-80c6-00155dfbfb00');
+
+    expect(locality.title[Language.UA], 'Олександрія');
+    expect(locality.title[Language.EN], isEmpty);
+    expect(locality.title[Language.RU], 'Александрия');
+
+    expect(locality.parentTitle[Language.UA], 'Кіровоградська');
+    expect(locality.parentTitle[Language.EN], isEmpty);
+    expect(locality.parentTitle[Language.RU], 'Кировоградская');
   });
 }

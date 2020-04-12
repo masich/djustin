@@ -5,5 +5,6 @@ export 'model/common/locale.dart';
 export 'model/response.dart';
 export 'model/service_info.dart';
 export 'model/tracking.dart';
+export 'model/locality.dart';
 export 'service/justin_service.dart';
 export 'service/service.dart';

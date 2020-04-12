@@ -158,3 +158,34 @@ const String responseServicesRawJson = '''
      ]
 }
 ''';
+
+const String responseLocalitiesRawJson = '''
+{
+    "status": 1,
+    "msg": null,
+    "result": [
+        {
+            "uuid": "82362067-dc04-11e7-80c6-00155dfbfb00",
+            "SCOATOU": "3510300000",
+            "parent_uuid": "17bc2896-dbfe-11e7-80c6-00155dfbfb00",
+            "title_ua": "Олександрія",
+            "parent_title_ua": "Кіровоградська",
+            "title_ru": "Александрия",
+            "parent_title_ru": "Кировоградская",
+            "title_en": "",
+            "parent_title_en": ""
+        },
+        {
+            "uuid": "cbd3a0ee-dc02-11e7-80c6-00155dfbfb00",
+            "SCOATOU": "5120410100",
+            "parent_uuid": "03bec6fe-db50-11e7-80c6-00155dfbfb00",
+            "title_ua": "Арциз",
+            "parent_title_ua": "Одеська",
+            "title_ru": "Арциз",
+            "parent_title_ru": "Одесская",
+            "title_en": "",
+            "parent_title_en": "Odesska"
+        }
+     ]
+}
+''';

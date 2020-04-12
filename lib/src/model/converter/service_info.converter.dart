@@ -1,8 +1,8 @@
-import 'package:djustin/src/model/converter/json_converter.dart';
 import 'package:djustin/src/model/common/locale.dart';
+import 'package:djustin/src/model/converter/json_converter.dart';
 import 'package:djustin/src/model/service_info.dart';
 
-class ServiceConverter extends JsonConverter<ServiceInfo> {
+class ServiceInfoConverter extends JsonConverter<ServiceInfo> {
   static const String _serviceTrue = '1';
 
   @override
