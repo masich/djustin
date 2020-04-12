@@ -18,6 +18,8 @@ void serviceTest() {
       await requestBranchTypes(service);
       await requestTracking(service);
       await requestTrackingHistory(service);
+      await requestLocalitiesAll(service);
+      await requestLocalitiesActive(service);
     });
   });
 }
@@ -71,4 +73,24 @@ void requestTrackingHistory(JustinService service) async {
   expect(response.message, isNull);
   expect(response.results, isNotNull);
   expect(response.results.length, 6);
+}
+
+void requestLocalitiesAll(JustinService service) async {
+  var response = await service.getLocalitiesAll();
+
+  expect(response, isNotNull);
+  expect(response.status, 1);
+  expect(response.message, isNull);
+  expect(response.results, isNotNull);
+  expect(response.results.length, greaterThan(1));
+}
+
+void requestLocalitiesActive(JustinService service) async {
+  var response = await service.getLocalitiesAll();
+
+  expect(response, isNotNull);
+  expect(response.status, 1);
+  expect(response.message, isNull);
+  expect(response.results, isNotNull);
+  expect(response.results.length, greaterThanOrEqualTo(0));
 }

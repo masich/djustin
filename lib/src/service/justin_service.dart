@@ -11,7 +11,7 @@ class Endpoint {
   static const String tracking = '/tracking';
   static const String trackingHistory = '/tracking_history';
   static const String localities = '/localities';
-  static const String services = '/services';
+  static const String servicesInfo = '/services';
 
   Endpoint._();
 }
@@ -32,5 +32,14 @@ class JustinService extends Service {
   Future<Response<Tracking>> getTrackingHistory(String trackingNumber) {
     var endpoint = '${Endpoint.trackingHistory}/${trackingNumber}';
     return getResponseDirect(endpoint, TrackingConverter());
+  }
+
+  Future<Response<Locality>> getLocalitiesAll() {
+    return getResponseDirect(Endpoint.localities, LocalityConverter());
+  }
+
+  Future<Response<Locality>> getLocalitiesActive() {
+    var endpoint = '${Endpoint.localities}/activity';
+    return getResponseDirect(endpoint, LocalityConverter());
   }
 }
