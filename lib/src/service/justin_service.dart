@@ -42,4 +42,8 @@ class JustinService extends Service {
     var endpoint = '${Endpoint.localities}/activity';
     return getResponseDirect(endpoint, LocalityConverter());
   }
+
+  Future<Response<ServiceInfo>> getServicesInfo() {
+    return getResponseDirect(Endpoint.servicesInfo, ServiceInfoConverter());
+  }
 }

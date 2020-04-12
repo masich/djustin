@@ -20,6 +20,7 @@ void serviceTest() {
       await requestTrackingHistory(service);
       await requestLocalitiesAll(service);
       await requestLocalitiesActive(service);
+      await requestServicesInfo(service);
     });
   });
 }
@@ -93,4 +94,14 @@ void requestLocalitiesActive(JustinService service) async {
   expect(response.message, isNull);
   expect(response.results, isNotNull);
   expect(response.results.length, greaterThanOrEqualTo(0));
+}
+
+void requestServicesInfo(JustinService service) async {
+  var response = await service.getServicesInfo();
+
+  expect(response, isNotNull);
+  expect(response.status, 1);
+  expect(response.message, isNull);
+  expect(response.results, isNotNull);
+  expect(response.results.length, greaterThan(0));
 }
