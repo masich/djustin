@@ -1,37 +1,41 @@
-import 'package:djustin/src/model/common/activator.dart';
 import 'package:djustin/src/model/common/locale.dart';
 import 'package:djustin/src/model/converter/json_converter.dart';
 import 'package:djustin/src/model/response.dart';
 
-class ResponseConverter<ResultType,
-        ResultConverter extends JsonConverter<ResultType>>
-    extends JsonConverter<Response<ResultType>> {
-  ResponseConverter({this.resultConverter});
+class ResponseConverter<Result, ResultConverter extends JsonConverter<Result>>
+    extends JsonConverter<Response<Result>> {
+  ResponseConverter(JsonConverter<Result> resultConverter)
+      : _resultConverter = resultConverter;
 
-  ResultConverter resultConverter;
+  final ResultConverter _resultConverter;
+  ResponseMassageConverter _messageConverter;
 
-  List<ResultType> _parseResults(List<dynamic> json) {
+  List<Result> _parseResults(List<dynamic> json) {
     var resultsJson = json?.map((e) => e as Map<String, dynamic>);
-    List<ResultType> results;
+    List<Result> results;
     if (resultsJson != null) {
-      resultConverter ??= Activator.createInstance(ResultConverter);
       results = resultsJson
-          .map((resultJson) => resultConverter.fromJson(resultJson))
+          .map((resultJson) => _resultConverter.fromJson(resultJson))
           ?.toList();
     }
     return results;
   }
 
   @override
-  Response<ResultType> fromJson(Map<String, dynamic> json) {
-    return Response<ResultType>(
-        json['status'],
-        ResponseMassageConverter().fromJson(json['msg']),
-        _parseResults(json['result'] as List<dynamic>));
+  Response<Result> fromJson(Map<String, dynamic> json) {
+    Response response;
+    if (json != null) {
+      _messageConverter ??= ResponseMassageConverter();
+      response = Response<Result>(
+          json['status'],
+          _messageConverter.fromJson(json['msg']),
+          _parseResults(json['result'] as List<dynamic>));
+    }
+    return response;
   }
 
   @override
-  Map<String, dynamic> toJson(Response<ResultType> value) {
+  Map<String, dynamic> toJson(Response<Result> value) {
     // TODO: implement toJson
     throw UnimplementedError();
   }

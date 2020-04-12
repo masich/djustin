@@ -43,7 +43,11 @@ class Service {
   Future<Response<ReturnType>> getResponseDirect<ReturnType>(
       String endpoint, JsonConverter<ReturnType> converter,
       {OnErrorCallback onError, Map<String, String> headers}) {
-    return getResponse(endpoint, ResponseConverter(resultConverter: converter));
+    return getResponse(endpoint, ResponseConverter(converter));
+  }
+
+  void close() {
+    _client.close();
   }
 
   void _defaultErrorHandler(int statusCode, String endpoint) {

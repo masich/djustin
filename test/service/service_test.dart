@@ -6,7 +6,7 @@ void main() {
   group('djustin service tests', () {
     JustinService service;
     setUp(() {
-      service = JustinService(endpointBase: Endpoint.base);
+      service = JustinService();
     });
 
     test('Justin service simple tests', () async {
@@ -24,6 +24,10 @@ void main() {
       await requestBranchesAll(service);
       await requestBranches(service);
       await requestBranchLocators(service);
+    });
+
+    tearDown(() {
+      service.close();
     });
   });
 }

@@ -1,10 +1,5 @@
 import 'package:djustin/converters.dart';
 import 'package:djustin/djustin.dart';
-import 'package:djustin/src/model/converter/branch.converter.dart';
-import 'package:djustin/src/model/converter/branch_type.converter.dart';
-import 'package:djustin/src/model/converter/response.converter.dart';
-import 'package:djustin/src/model/converter/service_info.converter.dart';
-import 'package:djustin/src/model/converter/tracking.converter.dart';
 import 'package:test/test.dart';
 
 import 'jsons.dart';
@@ -30,7 +25,7 @@ void responseBranchTypeTest() {
   Response<BranchType> response;
 
   setUp(() {
-    response = ResponseConverter<BranchType, BranchTypeConverter>()
+    response = ResponseConverter(BranchTypeConverter())
         .fromJsonString(branchTypeRawJson);
   });
 
@@ -41,8 +36,11 @@ void responseBranchTypeTest() {
     var branchType = response.results.first;
     expect(branchType, isNotNull);
     expect(branchType.format, BranchFormat.SMART);
-    expect(branchType.description,
-        '''SMART – відділення, у якому здійснюється приймання/видача відправлення вагою не більше ніж 15 кг та з максимальною довжиною однієї зі сторін не більше ніж 90 см.''');
+    expect(
+        branchType.description,
+        'SMART – відділення, у якому здійснюється приймання/видача '
+        'відправлення вагою не більше ніж 15 кг та з максимальною '
+        'довжиною однієї зі сторін не більше ніж 90 см.');
   });
 }
 
@@ -50,7 +48,8 @@ void responseNullResultTest() {
   Response response;
 
   setUp(() {
-    response = ResponseConverter().fromJsonString(responseNullResultRawJson);
+    response =
+        ResponseConverter(null).fromJsonString(responseNullResultRawJson);
   });
 
   test('Response null result test', () {
@@ -70,8 +69,8 @@ void responseBranchTest() {
   Response<Branch> response;
 
   setUp(() {
-    response = ResponseConverter<Branch, BranchConverter>()
-        .fromJsonString(branchRawJson);
+    response =
+        ResponseConverter(BranchConverter()).fromJsonString(branchRawJson);
   });
 
   test('Branch json response test', () {
@@ -118,12 +117,18 @@ void responseBranchTest() {
 
     var navigation = branchFirst.publicInfo.navigation;
     expect(navigation.length, 3);
-    expect(navigation[Language.UA],
-        "Окреме приміщення, вхід з вул. Теодора Драйзера, ліворуч від ''Сільпо''");
-    expect(navigation[Language.EN],
-        "Separate room, entrance from str. Theodore Dreiser, left of ''Silpo''");
-    expect(navigation[Language.RU],
-        "Отдельное здание, вход с ул. Теодора Драйзера, слева от ''Сильпо''");
+    expect(
+        navigation[Language.UA],
+        'Окреме приміщення, вхід з вул. Теодора Драйзера, '
+        "ліворуч від ''Сільпо''");
+    expect(
+        navigation[Language.EN],
+        'Separate room, entrance from str. Theodore Dreiser, '
+        "left of ''Silpo''");
+    expect(
+        navigation[Language.RU],
+        'Отдельное здание, вход с ул. Теодора Драйзера, '
+        "слева от ''Сильпо''");
   });
 }
 
@@ -131,7 +136,7 @@ void responseTrackingTest() {
   Response<Tracking> response;
 
   setUp(() {
-    response = ResponseConverter<Tracking, TrackingConverter>()
+    response = ResponseConverter(TrackingConverter())
         .fromJsonString(responseTrackingRawJson);
   });
 
@@ -156,7 +161,7 @@ void responseServicesTest() {
   Response<ServiceInfo> response;
 
   setUp(() {
-    response = ResponseConverter<ServiceInfo, ServiceInfoConverter>()
+    response = ResponseConverter(ServiceInfoConverter())
         .fromJsonString(responseServicesRawJson);
   });
 
@@ -190,7 +195,7 @@ void responseLocalitiesTest() {
   Response<Locality> response;
 
   setUp(() {
-    response = ResponseConverter<Locality, LocalityConverter>()
+    response = ResponseConverter(LocalityConverter())
         .fromJsonString(responseLocalitiesRawJson);
   });
 
@@ -219,7 +224,7 @@ void responseBranchLocatorTest() {
   Response<BranchLocator> response;
 
   setUp(() {
-    response = ResponseConverter<BranchLocator, BranchLocatorConverter>()
+    response = ResponseConverter(BranchLocatorConverter())
         .fromJsonString(responseBranchLocatorRawJson);
   });
 
