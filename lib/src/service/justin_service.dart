@@ -23,4 +23,9 @@ class JustinService extends Service {
   Future<Response<BranchType>> getBranchTypes() {
     return getResponseDirect(Endpoint.branchTypes, BranchTypeConverter());
   }
+
+  Future<Response<Tracking>> getTracking(String trackingNumber) {
+    var endpoint = '${Endpoint.tracking}/${trackingNumber}';
+    return getResponseDirect(endpoint, TrackingConverter());
+  }
 }

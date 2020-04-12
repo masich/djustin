@@ -16,6 +16,7 @@ void serviceTest() {
 
     test('Justin service tests', () async {
       await requestBranchTypes(service);
+      await requestTracking(service);
     });
   });
 }
@@ -49,4 +50,14 @@ void requestBranchTypes(JustinService service) async {
   expect(response.message, isNull);
   expect(response.results, isNotNull);
   expect(response.results.length, 3);
+}
+
+void requestTracking(JustinService service) async {
+  var response = await service.getTracking('201810165');
+
+  expect(response, isNotNull);
+  expect(response.status, 1);
+  expect(response.message, isNull);
+  expect(response.results, isNotNull);
+  expect(response.results.length, 1);
 }
