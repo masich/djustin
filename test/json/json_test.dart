@@ -1,10 +1,5 @@
 import 'package:djustin/converters.dart';
 import 'package:djustin/djustin.dart';
-import 'package:djustin/src/model/converter/branch.converter.dart';
-import 'package:djustin/src/model/converter/branch_type.converter.dart';
-import 'package:djustin/src/model/converter/response.converter.dart';
-import 'package:djustin/src/model/converter/service_info.converter.dart';
-import 'package:djustin/src/model/converter/tracking.converter.dart';
 import 'package:test/test.dart';
 
 import 'jsons.dart';
@@ -41,8 +36,11 @@ void responseBranchTypeTest() {
     var branchType = response.results.first;
     expect(branchType, isNotNull);
     expect(branchType.format, BranchFormat.SMART);
-    expect(branchType.description,
-        '''SMART – відділення, у якому здійснюється приймання/видача відправлення вагою не більше ніж 15 кг та з максимальною довжиною однієї зі сторін не більше ніж 90 см.''');
+    expect(
+        branchType.description,
+        'SMART – відділення, у якому здійснюється приймання/видача '
+        'відправлення вагою не більше ніж 15 кг та з максимальною '
+        'довжиною однієї зі сторін не більше ніж 90 см.');
   });
 }
 
@@ -119,12 +117,18 @@ void responseBranchTest() {
 
     var navigation = branchFirst.publicInfo.navigation;
     expect(navigation.length, 3);
-    expect(navigation[Language.UA],
-        "Окреме приміщення, вхід з вул. Теодора Драйзера, ліворуч від ''Сільпо''");
-    expect(navigation[Language.EN],
-        "Separate room, entrance from str. Theodore Dreiser, left of ''Silpo''");
-    expect(navigation[Language.RU],
-        "Отдельное здание, вход с ул. Теодора Драйзера, слева от ''Сильпо''");
+    expect(
+        navigation[Language.UA],
+        'Окреме приміщення, вхід з вул. Теодора Драйзера, '
+        "ліворуч від ''Сільпо''");
+    expect(
+        navigation[Language.EN],
+        'Separate room, entrance from str. Theodore Dreiser, '
+        "left of ''Silpo''");
+    expect(
+        navigation[Language.RU],
+        'Отдельное здание, вход с ул. Теодора Драйзера, '
+        "слева от ''Сильпо''");
   });
 }
 
