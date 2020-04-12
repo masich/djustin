@@ -1,21 +1,19 @@
-import 'package:djustin/src/model/common/activator.dart';
 import 'package:djustin/src/model/common/locale.dart';
 import 'package:djustin/src/model/converter/json_converter.dart';
 import 'package:djustin/src/model/response.dart';
 
 class ResponseConverter<Result, ResultConverter extends JsonConverter<Result>>
     extends JsonConverter<Response<Result>> {
-  ResponseConverter({ResultConverter resultConverter})
+  ResponseConverter(JsonConverter<Result> resultConverter)
       : _resultConverter = resultConverter;
 
-  ResultConverter _resultConverter;
+  final ResultConverter _resultConverter;
   ResponseMassageConverter _messageConverter;
 
   List<Result> _parseResults(List<dynamic> json) {
     var resultsJson = json?.map((e) => e as Map<String, dynamic>);
     List<Result> results;
     if (resultsJson != null) {
-      _resultConverter ??= Activator.createInstance(ResultConverter);
       results = resultsJson
           .map((resultJson) => _resultConverter.fromJson(resultJson))
           ?.toList();

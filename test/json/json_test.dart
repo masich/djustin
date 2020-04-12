@@ -30,7 +30,7 @@ void responseBranchTypeTest() {
   Response<BranchType> response;
 
   setUp(() {
-    response = ResponseConverter<BranchType, BranchTypeConverter>()
+    response = ResponseConverter(BranchTypeConverter())
         .fromJsonString(branchTypeRawJson);
   });
 
@@ -50,7 +50,8 @@ void responseNullResultTest() {
   Response response;
 
   setUp(() {
-    response = ResponseConverter().fromJsonString(responseNullResultRawJson);
+    response =
+        ResponseConverter(null).fromJsonString(responseNullResultRawJson);
   });
 
   test('Response null result test', () {
@@ -70,8 +71,8 @@ void responseBranchTest() {
   Response<Branch> response;
 
   setUp(() {
-    response = ResponseConverter<Branch, BranchConverter>()
-        .fromJsonString(branchRawJson);
+    response =
+        ResponseConverter(BranchConverter()).fromJsonString(branchRawJson);
   });
 
   test('Branch json response test', () {
@@ -131,7 +132,7 @@ void responseTrackingTest() {
   Response<Tracking> response;
 
   setUp(() {
-    response = ResponseConverter<Tracking, TrackingConverter>()
+    response = ResponseConverter(TrackingConverter())
         .fromJsonString(responseTrackingRawJson);
   });
 
@@ -156,7 +157,7 @@ void responseServicesTest() {
   Response<ServiceInfo> response;
 
   setUp(() {
-    response = ResponseConverter<ServiceInfo, ServiceInfoConverter>()
+    response = ResponseConverter(ServiceInfoConverter())
         .fromJsonString(responseServicesRawJson);
   });
 
@@ -190,7 +191,7 @@ void responseLocalitiesTest() {
   Response<Locality> response;
 
   setUp(() {
-    response = ResponseConverter<Locality, LocalityConverter>()
+    response = ResponseConverter(LocalityConverter())
         .fromJsonString(responseLocalitiesRawJson);
   });
 
@@ -219,7 +220,7 @@ void responseBranchLocatorTest() {
   Response<BranchLocator> response;
 
   setUp(() {
-    response = ResponseConverter<BranchLocator, BranchLocatorConverter>()
+    response = ResponseConverter(BranchLocatorConverter())
         .fromJsonString(responseBranchLocatorRawJson);
   });
 

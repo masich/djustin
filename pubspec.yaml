@@ -1,6 +1,6 @@
 name: djustin
 description: A high-level Client Library for Justin Delivery Service OpenAPI
-version: 0.1.0
+version: 0.1.1
 homepage: https://github.com/masich/djustin
 
 environment:
