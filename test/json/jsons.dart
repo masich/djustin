@@ -189,3 +189,40 @@ const String responseLocalitiesRawJson = '''
      ]
 }
 ''';
+
+const String responseBranchLocatorRawJson = '''
+{
+  "status": 1,
+  "msg": null,
+  "result": [
+    {
+      "number":  "258",
+      "adress":  "Київ, Січових Стрільців вул. , 37/41 (Сільпо)",
+      "locality":  "Київ",
+      "type":  "Відділення",
+      "format":  "SMART",
+      "delivery_branch_id":  "7100110258",
+      "max_weight":  "15",
+      "lat":  "50.456107",
+      "lng":  "30.496798",
+      "description":  "Відділення №258",
+      "shedule_description":  "ПН-НД 08-20",
+      "distance":  1.33
+    },
+    {
+      "number":  "380",
+      "adress":  "Київ, Майдан Незалежності, 1А",
+      "locality":  "Київ",
+      "type":  "Відділення",
+      "format":  "SMART",
+      "delivery_branch_id":  "7100110380",
+      "max_weight":  "15",
+      "lat":  "50.449457",
+      "lng":  "30.5260605",
+      "description":  "Відділення №380",
+      "shedule_description":  "ПН-НД 08-20",
+      "distance":  1.57
+    }
+  ]
+}
+''';

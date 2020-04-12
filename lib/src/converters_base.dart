@@ -1,4 +1,6 @@
 export 'model/converter/branch.converter.dart';
+export 'model/converter/branch_info.converter.dart';
+export 'model/converter/branch_locator.converter.dart';
 export 'model/converter/branch_type.converter.dart';
 export 'model/converter/json_converter.dart';
 export 'model/converter/locality.converter.dart';

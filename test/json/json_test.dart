@@ -17,6 +17,7 @@ void jsonConvertersTest() {
     responseTrackingTest();
     responseServicesTest();
     responseLocalitiesTest();
+    responseBranchLocatorTest();
   });
 }
 
@@ -80,18 +81,18 @@ void responseBranchTest() {
     var branchFirst = response.results.first;
     expect(branchFirst, isNotNull);
 
-    expect(branchFirst.number, 2);
-    expect(branchFirst.address, 'Київ, Драйзера вул., 8  (Сільпо)');
-    expect(branchFirst.locality, 'Київ');
-    expect(branchFirst.type, 'Відділення');
-    expect(branchFirst.format, BranchFormat.OSR);
-    expect(branchFirst.deliveryBranchId, '7100103004');
-    expect(branchFirst.maxWeight, 30);
-    expect(branchFirst.latitude, '50.5025327');
-    expect(branchFirst.longitude, '30.6051219');
-    expect(branchFirst.description, 'Відділення 2');
-    expect(
-        branchFirst.scheduleDescription, 'ПН-ПТ 10:00-19:00,СБ-НД 11:00-17:00');
+    expect(branchFirst.branchInfo.number, 2);
+    expect(branchFirst.branchInfo.address, 'Київ, Драйзера вул., 8  (Сільпо)');
+    expect(branchFirst.branchInfo.locality, 'Київ');
+    expect(branchFirst.branchInfo.type, 'Відділення');
+    expect(branchFirst.branchInfo.format, BranchFormat.OSR);
+    expect(branchFirst.branchInfo.deliveryBranchId, '7100103004');
+    expect(branchFirst.branchInfo.maxWeight, 30);
+    expect(branchFirst.branchInfo.latitude, '50.5025327');
+    expect(branchFirst.branchInfo.longitude, '30.6051219');
+    expect(branchFirst.branchInfo.description, 'Відділення 2');
+    expect(branchFirst.branchInfo.scheduleDescription,
+        'ПН-ПТ 10:00-19:00,СБ-НД 11:00-17:00');
 
     expect(branchFirst.photos.length, 2);
     expect(branchFirst.photos[0],
@@ -211,5 +212,36 @@ void responseLocalitiesTest() {
     expect(locality.parentTitle[Language.UA], 'Кіровоградська');
     expect(locality.parentTitle[Language.EN], isEmpty);
     expect(locality.parentTitle[Language.RU], 'Кировоградская');
+  });
+}
+
+void responseBranchLocatorTest() {
+  Response<BranchLocator> response;
+
+  setUp(() {
+    response = ResponseConverter<BranchLocator, BranchLocatorConverter>()
+        .fromJsonString(responseBranchLocatorRawJson);
+  });
+
+  test('Branch locator json response test', () {
+    testResponseStaticFieldsOk(response);
+    expect(response.results.length, 2);
+
+    var locator = response.results.first;
+    expect(locator, isNotNull);
+
+    expect(locator.branchInfo.number, 258);
+    expect(locator.branchInfo.address,
+        'Київ, Січових Стрільців вул. , 37/41 (Сільпо)');
+    expect(locator.branchInfo.locality, 'Київ');
+    expect(locator.branchInfo.type, 'Відділення');
+    expect(locator.branchInfo.format, BranchFormat.SMART);
+    expect(locator.branchInfo.deliveryBranchId, '7100110258');
+    expect(locator.branchInfo.maxWeight, 15);
+    expect(locator.branchInfo.latitude, '50.456107');
+    expect(locator.branchInfo.longitude, '30.496798');
+    expect(locator.branchInfo.description, 'Відділення №258');
+    expect(locator.branchInfo.scheduleDescription, 'ПН-НД 08-20');
+    expect(locator.distance, 1.33);
   });
 }

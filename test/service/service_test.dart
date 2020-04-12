@@ -10,19 +10,20 @@ void serviceTest() {
     });
 
     test('Justin service simple tests', () async {
-//      await requestResponse(service);
-//      await requestError(service);
+      await requestResponse(service);
+      await requestError(service);
     });
 
     test('Justin service tests', () async {
-//      await requestBranchTypes(service);
-//      await requestTracking(service);
-//      await requestTrackingHistory(service);
-//      await requestLocalitiesAll(service);
-//      await requestLocalitiesActive(service);
-//      await requestServicesInfo(service);
-//      await requestBranchesAll(service);
+      await requestBranchTypes(service);
+      await requestTracking(service);
+      await requestTrackingHistory(service);
+      await requestLocalitiesAll(service);
+      await requestLocalitiesActive(service);
+      await requestServicesInfo(service);
+      await requestBranchesAll(service);
       await requestBranches(service);
+      await requestBranchLocators(service);
     });
   });
 }
@@ -130,6 +131,16 @@ void requestBranch(JustinService service) async {
 
 void requestBranches(JustinService service) async {
   var response = await service.getBranches('Kyiv');
+
+  expect(response, isNotNull);
+  expect(response.status, 1);
+  expect(response.message, isNull);
+  expect(response.results, isNotNull);
+  expect(response.results.length, greaterThanOrEqualTo(0));
+}
+
+void requestBranchLocators(JustinService service) async {
+  var response = await service.getBranchLocators('Kyiv,Shevchenka,30');
 
   expect(response, isNotNull);
   expect(response.status, 1);

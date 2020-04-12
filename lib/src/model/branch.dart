@@ -1,29 +1,9 @@
-import 'branch_format.dart';
+import 'package:djustin/src/model/branch_info.dart';
+
 import 'common/locale.dart';
 
 class Branch {
-  final int number;
-  final String address;
-  final String locality;
-  final String type;
-  final BranchFormat format;
-
-  // jsonName: 'delivery_branch_id'
-  final String deliveryBranchId;
-
-  // jsonName: 'max_weight'
-  final int maxWeight;
-
-  // jsonName: 'lat'
-  final String latitude;
-
-  // jsonName: 'lng'
-  final String longitude;
-
-  final String description;
-
-  // jsonName: 'shedule_description'
-  final String scheduleDescription;
+  final BranchInfo branchInfo;
 
   final List<Uri> photos;
 
@@ -34,35 +14,12 @@ class Branch {
   final PublicInfo publicInfo;
 
   Branch(
-      this.number,
-      this.address,
-      this.locality,
-      this.type,
-      this.format,
-      this.deliveryBranchId,
-      this.maxWeight,
-      this.latitude,
-      this.longitude,
-      this.description,
-      this.scheduleDescription,
-      this.photos,
-      this.servicesAvailability,
-      this.publicInfo);
+      this.branchInfo, this.photos, this.servicesAvailability, this.publicInfo);
 
   @override
   String toString() {
     return 'Branch { '
-        'number: $number, '
-        'address: $address, '
-        'locality: $locality, '
-        'type: $type, '
-        'format: $format, '
-        'deliveryBranchId: $deliveryBranchId, '
-        'maxWeight: $maxWeight, '
-        'latitude: $latitude, '
-        'longitude: $longitude, '
-        'description: $description, '
-        'scheduleDescription: $scheduleDescription, '
+        'branchInfo: $branchInfo, '
         'photos: $photos, '
         'servicesAvailability: $servicesAvailability, '
         'publicInfo: $publicInfo '
