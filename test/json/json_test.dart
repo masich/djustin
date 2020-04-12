@@ -1,14 +1,13 @@
 import 'dart:convert' as json;
-import 'package:djustin/src/model/branch.dart';
-import 'package:djustin/src/model/branch_format.dart';
-import 'package:djustin/src/model/common/locale.dart';
-import 'package:djustin/src/model/service.dart';
-import 'package:djustin/src/model/tracking.dart';
 import 'package:test/test.dart';
-
 import 'package:djustin/djustin.dart';
 
 import 'jsons.dart';
+import 'package:djustin/src/model/converter/branch_type.converter.dart';
+import 'package:djustin/src/model/converter/response.converter.dart';
+import 'package:djustin/src/model/converter/branch.converter.dart';
+import 'package:djustin/src/model/converter/service.converter.dart';
+import 'package:djustin/src/model/converter/tracking.converter.dart';
 
 void jsonConvertersTest() {
   group('Json converters tests', () {

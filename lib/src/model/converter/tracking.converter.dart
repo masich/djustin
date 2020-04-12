@@ -1,4 +1,6 @@
-part of 'tracking.dart';
+import 'package:djustin/src/model/common/json_converter.dart';
+
+import 'package:djustin/src/model/tracking.dart';
 
 class TrackingConverter implements JsonConverter<Tracking> {
   @override

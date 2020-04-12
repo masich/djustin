@@ -1,8 +1,4 @@
-import 'package:djustin/src/model/common/activator.dart';
 import 'package:djustin/src/model/common/locale.dart';
-import 'package:djustin/src/model/common/json_converter.dart';
-
-part 'response.converter.dart';
 
 class Response<ResultType> {
   final int status;

@@ -4,6 +4,7 @@ extension KeyForValueFinder<Key, Value> on Map<Key, Value> {
     forEach((key, value) {
       if (value == this) {
         result = key;
+        return;
       }
     });
     return result;

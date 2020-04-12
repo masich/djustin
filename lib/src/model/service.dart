@@ -1,7 +1,4 @@
-import 'package:djustin/src/model/common/json_converter.dart';
 import 'package:djustin/src/model/common/locale.dart';
-
-part 'service.converter.dart';
 
 class Service {
   final String id;

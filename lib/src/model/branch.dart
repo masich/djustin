@@ -1,9 +1,5 @@
-import 'package:djustin/src/model/common/json_converter.dart';
-
 import 'branch_format.dart';
 import 'common/locale.dart';
-
-part 'branch.converter.dart';
 
 class Branch {
   final int number;

@@ -1,4 +1,7 @@
-part of 'branch_type.dart';
+import 'package:djustin/src/model/common/json_converter.dart';
+
+import 'package:djustin/src/model/branch_format.dart';
+import 'package:djustin/src/model/branch_type.dart';
 
 class BranchTypeConverter implements JsonConverter<BranchType> {
   @override

@@ -1,4 +1,8 @@
-part of 'response.dart';
+import 'package:djustin/src/model/common/json_converter.dart';
+import 'package:djustin/src/model/common/activator.dart';
+import 'package:djustin/src/model/common/locale.dart';
+
+import 'package:djustin/src/model/response.dart';
 
 class ResponseConverter<ResultType,
         ResultConverter extends JsonConverter<ResultType>>

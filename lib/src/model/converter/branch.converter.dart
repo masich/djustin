@@ -1,4 +1,8 @@
-part of 'branch.dart';
+import 'package:djustin/src/model/common/json_converter.dart';
+import 'package:djustin/src/model/common/locale.dart';
+
+import 'package:djustin/src/model/branch.dart';
+import 'package:djustin/src/model/branch_format.dart';
 
 class BranchConverter extends JsonConverter<Branch> {
   PublicInfoConverter _infoConverter;

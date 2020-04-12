@@ -1,7 +1,3 @@
-import 'package:djustin/src/model/common/json_converter.dart';
-
-part 'tracking.converter.dart';
-
 class Tracking {
   final int orderNumber;
   final String orderDescription;
