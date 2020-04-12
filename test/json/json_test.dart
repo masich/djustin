@@ -9,8 +9,8 @@ import 'package:test/test.dart';
 
 import 'jsons.dart';
 
-void jsonConvertersTest() {
-  group('Json converters tests', () {
+void main() {
+  group('djustin json converters tests', () {
     responseBranchTypeTest();
     responseNullResultTest();
     responseBranchTest();

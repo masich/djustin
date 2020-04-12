@@ -2,8 +2,8 @@ import 'package:djustin/converters.dart';
 import 'package:djustin/djustin.dart';
 import 'package:test/test.dart';
 
-void serviceTest() {
-  group('Service tests', () {
+void main() {
+  group('djustin service tests', () {
     JustinService service;
     setUp(() {
       service = JustinService(endpointBase: Endpoint.base);
