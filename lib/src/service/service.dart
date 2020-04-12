@@ -46,6 +46,10 @@ class Service {
     return getResponse(endpoint, ResponseConverter(resultConverter: converter));
   }
 
+  void close() {
+    _client.close();
+  }
+
   void _defaultErrorHandler(int statusCode, String endpoint) {
     var uri = Uri.parse(_endpointBase + endpoint);
     var message = 'An error occurs during requesting the '

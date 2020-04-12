@@ -25,6 +25,10 @@ void main() {
       await requestBranches(service);
       await requestBranchLocators(service);
     });
+
+    tearDown(() {
+      service.close();
+    });
   });
 }
 
