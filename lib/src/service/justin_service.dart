@@ -28,4 +28,9 @@ class JustinService extends Service {
     var endpoint = '${Endpoint.tracking}/${trackingNumber}';
     return getResponseDirect(endpoint, TrackingConverter());
   }
+
+  Future<Response<Tracking>> getTrackingHistory(String trackingNumber) {
+    var endpoint = '${Endpoint.trackingHistory}/${trackingNumber}';
+    return getResponseDirect(endpoint, TrackingConverter());
+  }
 }
