@@ -46,4 +46,18 @@ class JustinService extends Service {
   Future<Response<ServiceInfo>> getServicesInfo() {
     return getResponseDirect(Endpoint.servicesInfo, ServiceInfoConverter());
   }
+
+  Future<Response<Branch>> getBranchesAll() {
+    return getResponseDirect(Endpoint.branches, BranchConverter());
+  }
+
+  Future<Response<Branch>> getBranch(int branchNumber) {
+    var endpoint = '${Endpoint.branches}/${branchNumber}';
+    return getResponseDirect(endpoint, BranchConverter());
+  }
+
+  Future<Response<Branch>> getBranches(String forLocation) {
+    var endpoint = '${Endpoint.branches}?locality=${forLocation}';
+    return getResponseDirect(endpoint, BranchConverter());
+  }
 }

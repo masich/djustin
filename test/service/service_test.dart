@@ -10,17 +10,19 @@ void serviceTest() {
     });
 
     test('Justin service simple tests', () async {
-      await requestResponse(service);
-      await requestError(service);
+//      await requestResponse(service);
+//      await requestError(service);
     });
 
     test('Justin service tests', () async {
-      await requestBranchTypes(service);
-      await requestTracking(service);
-      await requestTrackingHistory(service);
-      await requestLocalitiesAll(service);
-      await requestLocalitiesActive(service);
-      await requestServicesInfo(service);
+//      await requestBranchTypes(service);
+//      await requestTracking(service);
+//      await requestTrackingHistory(service);
+//      await requestLocalitiesAll(service);
+//      await requestLocalitiesActive(service);
+//      await requestServicesInfo(service);
+//      await requestBranchesAll(service);
+      await requestBranches(service);
     });
   });
 }
@@ -104,4 +106,34 @@ void requestServicesInfo(JustinService service) async {
   expect(response.message, isNull);
   expect(response.results, isNotNull);
   expect(response.results.length, greaterThan(0));
+}
+
+void requestBranchesAll(JustinService service) async {
+  var response = await service.getBranchesAll();
+
+  expect(response, isNotNull);
+  expect(response.status, 1);
+  expect(response.message, isNull);
+  expect(response.results, isNotNull);
+  expect(response.results.length, greaterThan(0));
+}
+
+void requestBranch(JustinService service) async {
+  var response = await service.getBranch(220);
+
+  expect(response, isNotNull);
+  expect(response.status, 1);
+  expect(response.message, isNull);
+  expect(response.results, isNotNull);
+  expect(response.results.length, 1);
+}
+
+void requestBranches(JustinService service) async {
+  var response = await service.getBranches('Kyiv');
+
+  expect(response, isNotNull);
+  expect(response.status, 1);
+  expect(response.message, isNull);
+  expect(response.results, isNotNull);
+  expect(response.results.length, greaterThanOrEqualTo(0));
 }
