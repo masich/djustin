@@ -37,6 +37,9 @@ void main() {
     test('Justin request branches all service tests', () async {
       await requestBranchesAllTest(service);
     });
+    test('Justin request branch by number service tests', () async {
+      await requestBranchTest(service);
+    });
     test('Justin request branches for urban ares service tests', () async {
       await requestBranchesTest(service);
     });
