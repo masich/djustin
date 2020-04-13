@@ -11,7 +11,7 @@ class BranchType {
   @override
   String toString() {
     return 'BranchType { '
-        'format: $format, '
+        'format: ${format.string()}, '
         'description: $description '
         '}';
   }

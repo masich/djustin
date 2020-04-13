@@ -20,12 +20,12 @@ class Locality {
 
   @override
   String toString() {
-    return 'Locality{'
+    return 'Locality { '
         'uuid: $uuid, '
         'scoatou: $scoatou, '
         'parentUuid: $parentUuid, '
         'title: $title, '
-        'parentTitle: $parentTitle'
+        'parentTitle: $parentTitle '
         '}';
   }
 }
