@@ -13,10 +13,4 @@ class BranchTypeConverter extends JsonConverter<BranchType> {
     }
     return branchType;
   }
-
-  @override
-  Map<String, dynamic> toJson(BranchType value) {
-    // TODO: implement toJson
-    throw UnimplementedError();
-  }
 }

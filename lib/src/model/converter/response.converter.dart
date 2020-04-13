@@ -33,12 +33,6 @@ class ResponseConverter<Result, ResultConverter extends JsonConverter<Result>>
     }
     return response;
   }
-
-  @override
-  Map<String, dynamic> toJson(Response<Result> value) {
-    // TODO: implement toJson
-    throw UnimplementedError();
-  }
 }
 
 class ResponseMassageConverter extends JsonConverter<ResponseMessage> {
@@ -53,11 +47,5 @@ class ResponseMassageConverter extends JsonConverter<ResponseMessage> {
       });
     }
     return message;
-  }
-
-  @override
-  Map<String, dynamic> toJson(ResponseMessage value) {
-    // TODO: implement toJson
-    throw UnimplementedError();
   }
 }

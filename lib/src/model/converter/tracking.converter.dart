@@ -16,10 +16,4 @@ class TrackingConverter extends JsonConverter<Tracking> {
     }
     return tracking;
   }
-
-  @override
-  Map<String, dynamic> toJson(Tracking value) {
-    // TODO: implement toJson
-    throw UnimplementedError();
-  }
 }

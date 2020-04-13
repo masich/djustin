@@ -23,10 +23,4 @@ class LocalityConverter extends JsonConverter<Locality> {
     }
     return locality;
   }
-
-  @override
-  Map<String, dynamic> toJson(Locality value) {
-    // TODO: implement toJson
-    throw UnimplementedError();
-  }
 }

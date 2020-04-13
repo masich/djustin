@@ -16,10 +16,4 @@ class BranchLocatorConverter extends JsonConverter<BranchLocator> {
     }
     return locator;
   }
-
-  @override
-  Map<String, dynamic> toJson(BranchLocator value) {
-    // TODO: implement toJson
-    throw UnimplementedError();
-  }
 }
