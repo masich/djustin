@@ -32,7 +32,7 @@ void main() async {
 /// for a given `trackingNumber`
 void printBranch(JustinService service, int branchNumber) async {
   // Request info about branch with a `branchNumber` number
-  var branchResponse = await service.getBranch(branchNumber);
+  var branchResponse = await service.getBranchResponse(branchNumber);
   if (branchResponse.status != Response.statusOk) {
     // If error occurs (ex. if there is no branch info for provided `branchNumber`
     print(branchResponse.message.text[Language.EN]);
@@ -47,7 +47,7 @@ void printBranch(JustinService service, int branchNumber) async {
 /// for a given `trackingNumber`
 void printTracking(JustinService service, String trackingNumber) async {
   // Make a request for a tracking info
-  var trackingResponse = await service.getTracking(trackingNumber);
+  var trackingResponse = await service.getTrackingResponse(trackingNumber);
   if (trackingResponse.status != Response.statusOk) {
     // If error occurs (ex. if there is no tracking info for provided `trackingNumber`
     print(trackingResponse.message.text[Language.EN]);
@@ -61,7 +61,7 @@ void printTracking(JustinService service, String trackingNumber) async {
 /// Simple example that prints all branches from Justin OpenAPI
 void printAllBranches(JustinService service) async {
   // Make a request for all Justin branches
-  var allBranchesResponse = await service.getBranchesAll();
+  var allBranchesResponse = await service.getBranchesAllResponse();
   // Take a result list from the response
   var allBranches = allBranchesResponse.results;
   print(allBranches);

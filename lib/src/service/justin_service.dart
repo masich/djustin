@@ -18,59 +18,69 @@ class JustinService extends Service {
   JustinService({String endpointBase = Endpoint.base, http.Client client})
       : super(endpointBase: endpointBase, client: client);
 
-  Future<Response<BranchType>> getBranchTypes({OnErrorCallback onError}) {
+  Future<Response<BranchType>> getBranchTypesResponse(
+      {OnHttpErrorCallback onHttpError}) {
     return getResponseDirect(Endpoint.branchTypes, BranchTypeConverter(),
-        onError: onError);
+        onHttpError: onHttpError);
   }
 
-  Future<Response<Tracking>> getTracking(String trackCode,
-      {OnErrorCallback onError}) {
+  Future<Response<Tracking>> getTrackingResponse(String trackCode,
+      {OnHttpErrorCallback onHttpError}) {
     var endpoint = '${Endpoint.tracking}/${trackCode}';
-    return getResponseDirect(endpoint, TrackingConverter(), onError: onError);
+    return getResponseDirect(endpoint, TrackingConverter(),
+        onHttpError: onHttpError);
   }
 
-  Future<Response<Tracking>> getTrackingHistory(String trackCode,
-      {OnErrorCallback onError}) {
+  Future<Response<Tracking>> getTrackingHistoryResponse(String trackCode,
+      {OnHttpErrorCallback onHttpError}) {
     var endpoint = '${Endpoint.trackingHistory}/${trackCode}';
-    return getResponseDirect(endpoint, TrackingConverter(), onError: onError);
+    return getResponseDirect(endpoint, TrackingConverter(),
+        onHttpError: onHttpError);
   }
 
-  Future<Response<Locality>> getLocalitiesAll({OnErrorCallback onError}) {
+  Future<Response<Locality>> getLocalitiesAllResponse(
+      {OnHttpErrorCallback onHttpError}) {
     return getResponseDirect(Endpoint.localities, LocalityConverter(),
-        onError: onError);
+        onHttpError: onHttpError);
   }
 
-  Future<Response<Locality>> getLocalitiesActive({OnErrorCallback onError}) {
+  Future<Response<Locality>> getLocalitiesActiveResponse(
+      {OnHttpErrorCallback onHttpError}) {
     var endpoint = '${Endpoint.localities}/activity';
-    return getResponseDirect(endpoint, LocalityConverter(), onError: onError);
+    return getResponseDirect(endpoint, LocalityConverter(),
+        onHttpError: onHttpError);
   }
 
-  Future<Response<ServiceInfo>> getServicesInfo({OnErrorCallback onError}) {
+  Future<Response<ServiceInfo>> getServicesInfoResponse(
+      {OnHttpErrorCallback onHttpError}) {
     return getResponseDirect(Endpoint.servicesInfo, ServiceInfoConverter(),
-        onError: onError);
+        onHttpError: onHttpError);
   }
 
-  Future<Response<Branch>> getBranchesAll({OnErrorCallback onError}) {
+  Future<Response<Branch>> getBranchesAllResponse(
+      {OnHttpErrorCallback onHttpError}) {
     return getResponseDirect(Endpoint.branches, BranchConverter(),
-        onError: onError);
+        onHttpError: onHttpError);
   }
 
-  Future<Response<Branch>> getBranch(int branchNumber,
-      {OnErrorCallback onError}) {
+  Future<Response<Branch>> getBranchResponse(int branchNumber,
+      {OnHttpErrorCallback onHttpError}) {
     var endpoint = '${Endpoint.branches}/${branchNumber}';
-    return getResponseDirect(endpoint, BranchConverter(), onError: onError);
+    return getResponseDirect(endpoint, BranchConverter(),
+        onHttpError: onHttpError);
   }
 
-  Future<Response<Branch>> getBranches(String forUrbanArea,
-      {OnErrorCallback onError}) {
+  Future<Response<Branch>> getBranchesResponse(String forUrbanArea,
+      {OnHttpErrorCallback onHttpError}) {
     var endpoint = '${Endpoint.branches}?locality=${forUrbanArea}';
-    return getResponseDirect(endpoint, BranchConverter(), onError: onError);
+    return getResponseDirect(endpoint, BranchConverter(),
+        onHttpError: onHttpError);
   }
 
-  Future<Response<BranchLocator>> getBranchLocators(String forAddress,
-      {OnErrorCallback onError}) {
+  Future<Response<BranchLocator>> getBranchLocatorsResponse(String forAddress,
+      {OnHttpErrorCallback onHttpError}) {
     var endpoint = '${Endpoint.branchLocator}/${forAddress}';
     return getResponseDirect(endpoint, BranchLocatorConverter(),
-        onError: onError);
+        onHttpError: onHttpError);
   }
 }
