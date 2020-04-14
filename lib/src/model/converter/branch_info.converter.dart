@@ -23,10 +23,4 @@ class BranchInfoConverter extends JsonConverter<BranchInfo> {
     }
     return branchInfo;
   }
-
-  @override
-  Map<String, dynamic> toJson(BranchInfo value) {
-    // TODO: implement toJson
-    throw UnimplementedError();
-  }
 }

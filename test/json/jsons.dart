@@ -122,7 +122,7 @@ const String responseTrackingRawJson = '''
 }
 ''';
 
-const String responseServicesRawJson = '''
+const String responseServicesInfoRawJson = '''
 {
     "status": 1,
     "msg": null,

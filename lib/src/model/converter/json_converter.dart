@@ -6,6 +6,4 @@ abstract class JsonConverter<T> {
   T fromJsonString(String jsonString) {
     return fromJson(json.jsonDecode(jsonString));
   }
-
-  Map<String, dynamic> toJson(T value);
 }

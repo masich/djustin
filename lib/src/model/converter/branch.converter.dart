@@ -32,12 +32,6 @@ class BranchConverter extends JsonConverter<Branch> {
     }
     return branch;
   }
-
-  @override
-  Map<String, dynamic> toJson(Branch value) {
-    // TODO: implement toJson
-    throw UnimplementedError();
-  }
 }
 
 class PublicInfoConverter extends JsonConverter<PublicInfo> {
@@ -58,11 +52,5 @@ class PublicInfoConverter extends JsonConverter<PublicInfo> {
       publicInfo = PublicInfo(description, navigation);
     }
     return publicInfo;
-  }
-
-  @override
-  Map<String, dynamic> toJson(PublicInfo value) {
-    // TODO: implement toJson
-    throw UnimplementedError();
   }
 }

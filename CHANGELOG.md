@@ -7,3 +7,7 @@
 - Added services for requesting data thorough network connecting.
 - Added converters for models to convert data from JSON.
 - Added tests.
+
+## 0.1.1
+- Removed dart:mirrors dependency.
+- Updated justin services.

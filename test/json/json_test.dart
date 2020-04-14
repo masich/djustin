@@ -10,7 +10,7 @@ void main() {
     responseNullResultTest();
     responseBranchTest();
     responseTrackingTest();
-    responseServicesTest();
+    responseServicesInfoTest();
     responseLocalitiesTest();
     responseBranchLocatorTest();
   });
@@ -157,12 +157,12 @@ void responseTrackingTest() {
   });
 }
 
-void responseServicesTest() {
+void responseServicesInfoTest() {
   Response<ServiceInfo> response;
 
   setUp(() {
     response = ResponseConverter(ServiceInfoConverter())
-        .fromJsonString(responseServicesRawJson);
+        .fromJsonString(responseServicesInfoRawJson);
   });
 
   test('Services json response test', () {

@@ -34,10 +34,4 @@ class ServiceInfoConverter extends JsonConverter<ServiceInfo> {
     }
     return service;
   }
-
-  @override
-  Map<String, dynamic> toJson(ServiceInfo value) {
-    // TODO: implement toJson
-    throw UnimplementedError();
-  }
 }

@@ -44,7 +44,7 @@ class BranchInfo {
         'address: $address, '
         'locality: $locality, '
         'type: $type, '
-        'format: $format, '
+        'format: ${format.string()}, '
         'deliveryBranchId: $deliveryBranchId, '
         'maxWeight: $maxWeight, '
         'latitude: $latitude, '
