@@ -14,6 +14,9 @@ abstract class Endpoint {
   static const String servicesInfo = '/services';
 }
 
+typedef OnErrorCallback = void Function(
+    int status, ResponseMessage message, String endpoint);
+
 class JustinService extends Service {
   JustinService({String endpointBase = Endpoint.base, http.Client client})
       : super(endpointBase: endpointBase, client: client);
@@ -82,5 +85,24 @@ class JustinService extends Service {
     var endpoint = '${Endpoint.branchLocator}/${forAddress}';
     return getResponseDirect(endpoint, BranchLocatorConverter(),
         onHttpError: onHttpError);
+  }
+
+  List<ResultType> processResponse<ResultType>(
+      Response<ResultType> response, String endpoint,
+      {OnErrorCallback onError}) {
+    List<ResultType> results;
+    if (response.status == Response.statusOk) {
+      results = response.results;
+    } else {
+      onError ??= _defaultErrorHandler;
+      onError(response.status, response.message, endpoint);
+    }
+    return results;
+  }
+
+  static void _defaultErrorHandler(
+      int status, ResponseMessage message, String endpoint) {
+    print("Justin response contains an error. Status: '$status'; "
+        "Message: '$message'; Endpoint '$endpoint'");
   }
 }

@@ -8,7 +8,7 @@ import 'package:http/http.dart' as http;
 typedef OnHttpErrorCallback = void Function(int statusCode, String endpoint);
 
 class Service {
-  static const int statusCodeOk = 200;
+  static const int httpStatusCodeOk = 200;
 
   final String _endpointBase;
   final http.Client _client;
@@ -30,7 +30,7 @@ class Service {
       {OnHttpErrorCallback onHttpError, Map<String, String> headers}) async {
     var httpResponse = await getHttpResponse(endpoint, headers: headers);
     Response<ResultType> response;
-    if (httpResponse.statusCode == statusCodeOk) {
+    if (httpResponse.statusCode == httpStatusCodeOk) {
       response = converter.fromJsonString(httpResponse.body);
     } else {
       onHttpError ??= _defaultHttpErrorHandler;
