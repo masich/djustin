@@ -5,7 +5,7 @@ import 'package:test/test.dart';
 import 'jsons.dart';
 
 void main() {
-  group('djustin json converters tests', () {
+  group('djustin models tests', () {
     modelNullResultTest();
     modelBranchTypeTest();
     modelNullResultTest();
