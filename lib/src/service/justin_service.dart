@@ -14,8 +14,7 @@ abstract class Endpoint {
   static const String servicesInfo = '/services';
 }
 
-typedef OnErrorCallback = void Function(
-    int status, ResponseMessage message, String endpoint);
+typedef OnErrorCallback = void Function(int status, ResponseMessage message);
 
 class JustinService extends Service {
   JustinService({String endpointBase = Endpoint.base, http.Client client})
@@ -87,22 +86,87 @@ class JustinService extends Service {
         onHttpError: onHttpError);
   }
 
-  List<ResultType> processResponse<ResultType>(
-      Response<ResultType> response, String endpoint,
+  Future<List<BranchType>> getBranchTypes(
+      {OnErrorCallback onError, OnHttpErrorCallback onHttpError}) async {
+    var response = await getBranchTypesResponse(onHttpError: onHttpError);
+    return processResponse(response, onError: onError);
+  }
+
+  Future<Tracking> getTracking(String trackCode,
+      {OnErrorCallback onError, OnHttpErrorCallback onHttpError}) async {
+    var response =
+        await getTrackingResponse(trackCode, onHttpError: onHttpError);
+    var results = processResponse(response, onError: onError) ?? [];
+    return results.isEmpty ? null : results.first;
+  }
+
+  Future<List<Tracking>> getTrackingHistory(String trackCode,
+      {OnErrorCallback onError, OnHttpErrorCallback onHttpError}) async {
+    var response =
+        await getTrackingHistoryResponse(trackCode, onHttpError: onHttpError);
+    return processResponse(response, onError: onError);
+  }
+
+  Future<List<Locality>> getLocalitiesAll(
+      {OnErrorCallback onError, OnHttpErrorCallback onHttpError}) async {
+    var response = await getLocalitiesActiveResponse(onHttpError: onHttpError);
+    return processResponse(response, onError: onError);
+  }
+
+  Future<List<Locality>> getLocalitiesActive(
+      {OnErrorCallback onError, OnHttpErrorCallback onHttpError}) async {
+    var response = await getLocalitiesActiveResponse(onHttpError: onHttpError);
+    return processResponse(response, onError: onError);
+  }
+
+  Future<List<ServiceInfo>> getServicesInfo(
+      {OnErrorCallback onError, OnHttpErrorCallback onHttpError}) async {
+    var response = await getServicesInfoResponse(onHttpError: onHttpError);
+    return processResponse(response, onError: onError);
+  }
+
+  Future<List<Branch>> getBranchesAll(
+      {OnErrorCallback onError, OnHttpErrorCallback onHttpError}) async {
+    var response = await getBranchesAllResponse(onHttpError: onHttpError);
+    return processResponse(response, onError: onError);
+  }
+
+  Future<Branch> getBranch(int branchNumber,
+      {OnErrorCallback onError, OnHttpErrorCallback onHttpError}) async {
+    var response =
+        await getBranchResponse(branchNumber, onHttpError: onHttpError);
+    var results = processResponse(response, onError: onError) ?? [];
+    return results.isEmpty ? null : results.first;
+  }
+
+  Future<List<Branch>> getBranches(String forUrbanArea,
+      {OnErrorCallback onError, OnHttpErrorCallback onHttpError}) async {
+    var response =
+        await getBranchesResponse(forUrbanArea, onHttpError: onHttpError);
+    return processResponse(response, onError: onError);
+  }
+
+  Future<List<BranchLocator>> getBranchLocators(String forAddress,
+      {OnErrorCallback onError, OnHttpErrorCallback onHttpError}) async {
+    var response =
+        await getBranchLocatorsResponse(forAddress, onHttpError: onHttpError);
+    return processResponse(response, onError: onError);
+  }
+
+  List<ResultType> processResponse<ResultType>(Response<ResultType> response,
       {OnErrorCallback onError}) {
     List<ResultType> results;
     if (response.status == Response.statusOk) {
       results = response.results;
     } else {
       onError ??= _defaultErrorHandler;
-      onError(response.status, response.message, endpoint);
+      onError(response.status, response.message);
     }
     return results;
   }
 
-  static void _defaultErrorHandler(
-      int status, ResponseMessage message, String endpoint) {
+  static void _defaultErrorHandler(int status, ResponseMessage message) {
     print("Justin response contains an error. Status: '$status'; "
-        "Message: '$message'; Endpoint '$endpoint'");
+        "Message: '$message'");
   }
 }
