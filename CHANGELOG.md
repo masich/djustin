@@ -11,3 +11,9 @@
 ## 0.1.1
 - Removed dart:mirrors dependency.
 - Updated justin services.
+
+## 0.2.0
+- Updated justin services. *For now you can request directly response
+ result as well as response itself.*
+- Added ability to provide error handlers for justin and http errors.
+ 

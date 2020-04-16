@@ -10,9 +10,9 @@ class BranchType {
 
   @override
   String toString() {
-    return 'BranchType { '
+    return 'BranchType {'
         'format: ${format.string()}, '
-        'description: $description '
+        'description: $description'
         '}';
   }
 }

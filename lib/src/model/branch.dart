@@ -13,16 +13,15 @@ class Branch {
   // jsonName: 'public'
   final PublicInfo publicInfo;
 
-  Branch(
-      this.branchInfo, this.photos, this.servicesAvailability, this.publicInfo);
+  Branch(this.branchInfo, this.photos, this.servicesAvailability, this.publicInfo);
 
   @override
   String toString() {
-    return 'Branch { '
+    return 'Branch {'
         'branchInfo: $branchInfo, '
         'photos: $photos, '
         'servicesAvailability: $servicesAvailability, '
-        'publicInfo: $publicInfo '
+        'publicInfo: $publicInfo'
         '}';
   }
 }
@@ -40,7 +39,7 @@ class PublicInfo {
   String toString() {
     return 'PublicInfo {'
         'description: $description, '
-        'navigation: $navigation '
+        'navigation: $navigation'
         '}';
   }
 }

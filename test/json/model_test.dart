@@ -14,6 +14,7 @@ void main() {
     modelServiceInfoTest();
     modelLocalitiesTest();
     modelBranchLocatorTest();
+    localeStringTest();
   });
 }
 
@@ -21,21 +22,20 @@ void modelNullResultTest() {
   Response response;
 
   setUp(() {
-    response =
-        ResponseConverter(null).fromJsonString(responseNullResultRawJson);
+    response = ResponseConverter(null).fromJsonString(responseNullResultRawJson);
   });
   test('Model null response test', () {
-    var expectedString = 'Response { '
+    const expectedString = 'Response {'
         'status: 0, '
-        'message: ResponseMessage { '
+        'message: ResponseMessage {'
         'code: 10104, '
         'text: {'
         'Language.UA: Відділення з вказаним номером не знайдено, '
         'Language.EN: Branch with the specified number not found, '
         'Language.RU: Отделение с указанным номером не найдено'
-        '} '
-        '},'
-        ' results: null '
+        '}'
+        '}, '
+        'results: null'
         '}';
     expect(response.toString(), expectedString);
   });
@@ -45,16 +45,15 @@ void modelBranchTypeTest() {
   Response<BranchType> response;
 
   setUp(() {
-    response = ResponseConverter(BranchTypeConverter())
-        .fromJsonString(branchTypeRawJson);
+    response = ResponseConverter(BranchTypeConverter()).fromJsonString(branchTypeRawJson);
   });
 
   test('Model branch type test', () {
-    var expectedString = 'BranchType { '
+    const expectedString = 'BranchType {'
         'format: SMART, '
         'description: SMART – відділення, у якому здійснюється приймання/видача '
         'відправлення вагою не більше ніж 15 кг та з максимальною довжиною '
-        'однієї зі сторін не більше ніж 90 см. '
+        'однієї зі сторін не більше ніж 90 см.'
         '}';
     expect(response.results.first.toString(), expectedString);
   });
@@ -64,13 +63,12 @@ void modelBranchTest() {
   Response<Branch> response;
 
   setUp(() {
-    response =
-        ResponseConverter(BranchConverter()).fromJsonString(branchRawJson);
+    response = ResponseConverter(BranchConverter()).fromJsonString(branchRawJson);
   });
 
   test('Model branch test', () {
-    var expectedString = 'Branch { '
-        'branchInfo: BranchInfo { '
+    const expectedString = 'Branch {'
+        'branchInfo: BranchInfo {'
         'number: 2, '
         'address: Київ, Драйзера вул., 8  (Сільпо), '
         'locality: Київ, '
@@ -110,8 +108,8 @@ void modelBranchTest() {
         "left of ''Silpo'', "
         'Language.RU: Отдельное здание, вход с ул. Теодора Драйзера, '
         "слева от ''Сильпо''"
-        '} '
-        '} '
+        '}'
+        '}'
         '}';
     expect(response.results.first.toString(), expectedString);
   });
@@ -121,18 +119,17 @@ void modelTrackingTest() {
   Response<Tracking> response;
 
   setUp(() {
-    response = ResponseConverter(TrackingConverter())
-        .fromJsonString(responseTrackingRawJson);
+    response = ResponseConverter(TrackingConverter()).fromJsonString(responseTrackingRawJson);
   });
 
   test('Model tracking test', () {
-    var expectedString = 'Tracking { '
+    const expectedString = 'Tracking {'
         'orderNumber: 201810165, '
         'orderDescription: Замовлення клієнта 201810165 від 25.07.2018, '
         'dateTime: 2019-02-27 10:20:51.000, '
         'status: Одержано, '
         'departmentNumber: , '
-        'departmentAddress:  '
+        'departmentAddress: '
         '}';
     expect(response.results.first.toString(), expectedString);
   });
@@ -142,12 +139,11 @@ void modelServiceInfoTest() {
   Response<ServiceInfo> response;
 
   setUp(() {
-    response = ResponseConverter(ServiceInfoConverter())
-        .fromJsonString(responseServicesInfoRawJson);
+    response = ResponseConverter(ServiceInfoConverter()).fromJsonString(responseServicesInfoRawJson);
   });
 
   test('Model service info test', () {
-    var expectedString = 'ServiceInfo { '
+    const expectedString = 'ServiceInfo {'
         'id: monobank, '
         'name: {'
         'Language.UA: Картка "Монобанк", '
@@ -162,7 +158,7 @@ void modelServiceInfoTest() {
         'alias: monobank, '
         'hasSelfService: false, '
         'hasCategoryService: true, '
-        'hasSendService: true '
+        'hasSendService: true'
         '}';
     expect(response.results.first.toString(), expectedString);
   });
@@ -172,12 +168,11 @@ void modelLocalitiesTest() {
   Response<Locality> response;
 
   setUp(() {
-    response = ResponseConverter(LocalityConverter())
-        .fromJsonString(responseLocalitiesRawJson);
+    response = ResponseConverter(LocalityConverter()).fromJsonString(responseLocalitiesRawJson);
   });
 
   test('Model locality test', () {
-    var expectedString = 'Locality { '
+    const expectedString = 'Locality {'
         'uuid: 82362067-dc04-11e7-80c6-00155dfbfb00, '
         'scoatou: 3510300000, '
         'parentUuid: 17bc2896-dbfe-11e7-80c6-00155dfbfb00, '
@@ -190,7 +185,7 @@ void modelLocalitiesTest() {
         'Language.UA: Кіровоградська, '
         'Language.EN: , '
         'Language.RU: Кировоградская'
-        '} '
+        '}'
         '}';
     expect(response.results.first.toString(), expectedString);
   });
@@ -200,13 +195,12 @@ void modelBranchLocatorTest() {
   Response<BranchLocator> response;
 
   setUp(() {
-    response = ResponseConverter(BranchLocatorConverter())
-        .fromJsonString(responseBranchLocatorRawJson);
+    response = ResponseConverter(BranchLocatorConverter()).fromJsonString(responseBranchLocatorRawJson);
   });
 
   test('Model branch locator test', () {
-    var expectedString = 'BranchLocator { '
-        'branchInfo: BranchInfo { '
+    const expectedString = 'BranchLocator {'
+        'branchInfo: BranchInfo {'
         'number: 258, '
         'address: Київ, Січових Стрільців вул. , 37/41 (Сільпо), '
         'locality: Київ, type: Відділення, '
@@ -218,8 +212,18 @@ void modelBranchLocatorTest() {
         'description: Відділення №258, '
         'scheduleDescription: ПН-НД 08-20'
         '}, '
-        'distance: 1.33 '
+        'distance: 1.33'
         '}';
     expect(response.results.first.toString(), expectedString);
+  });
+}
+
+void localeStringTest() {
+  test('Locale string locator test', () {
+    const expectedString = 'ua';
+    expect(Language.UA.string(), expectedString);
+
+    const expectedLanguage = Language.UA;
+    expect(Locale.fromString('ua'), expectedLanguage);
   });
 }

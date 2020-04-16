@@ -6,32 +6,14 @@ class ServiceInfoConverter extends JsonConverter<ServiceInfo> {
   static const String _serviceTrue = '1';
 
   @override
-  ServiceInfo fromJson(Map<String, dynamic> json) {
-    ServiceInfo service;
-    if (json != null && json.isNotEmpty) {
-      var id = json.keys.first;
-      json = json[id];
+  ServiceInfo fromNotBlankJson(Map<String, dynamic> json) {
+    final id = json.keys.first;
+    json = json[id];
 
-      var name = <Language, String>{
-        Language.UA: json['name_ua'],
-        Language.EN: json['name_en'],
-        Language.RU: json['name_ru']
-      };
-      var description = <Language, String>{
-        Language.UA: json['description_ua'],
-        Language.EN: json['description_en'],
-        Language.RU: json['description_ru']
-      };
+    final name = Locale.parseLocalizedText('name_', json);
+    final description = Locale.parseLocalizedText('description_', json);
 
-      service = ServiceInfo(
-          id,
-          name,
-          description,
-          json['alias'],
-          json['self_service'] == _serviceTrue,
-          json['category_service'] == _serviceTrue,
-          json['send_service'] == _serviceTrue);
-    }
-    return service;
+    return ServiceInfo(id, name, description, json['alias'], json['self_service'] == _serviceTrue,
+        json['category_service'] == _serviceTrue, json['send_service'] == _serviceTrue);
   }
 }

@@ -15,10 +15,10 @@ class Response<ResultType> {
 
   @override
   String toString() {
-    return 'Response { '
+    return 'Response {'
         'status: $status, '
         'message: $message, '
-        'results: $results '
+        'results: $results'
         '}';
   }
 }
@@ -33,9 +33,9 @@ class ResponseMessage {
 
   @override
   String toString() {
-    return 'ResponseMessage { '
+    return 'ResponseMessage {'
         'code: $code, '
-        'text: $text '
+        'text: $text'
         '}';
   }
 }
