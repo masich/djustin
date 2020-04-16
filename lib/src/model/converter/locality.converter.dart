@@ -18,8 +18,7 @@ class LocalityConverter extends JsonConverter<Locality> {
         Language.RU: json['parent_title_ru']
       };
 
-      locality = Locality(json['uuid'], json['SCOATOU'], json['parent_uuid'],
-          title, parentTitle);
+      locality = Locality(json['uuid'], json['SCOATOU'], json['parent_uuid'], title, parentTitle);
     }
     return locality;
   }

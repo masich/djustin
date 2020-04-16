@@ -23,14 +23,8 @@ class ServiceInfoConverter extends JsonConverter<ServiceInfo> {
         Language.RU: json['description_ru']
       };
 
-      service = ServiceInfo(
-          id,
-          name,
-          description,
-          json['alias'],
-          json['self_service'] == _serviceTrue,
-          json['category_service'] == _serviceTrue,
-          json['send_service'] == _serviceTrue);
+      service = ServiceInfo(id, name, description, json['alias'], json['self_service'] == _serviceTrue,
+          json['category_service'] == _serviceTrue, json['send_service'] == _serviceTrue);
     }
     return service;
   }

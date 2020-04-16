@@ -11,8 +11,7 @@ class BranchLocatorConverter extends JsonConverter<BranchLocator> {
     BranchLocator locator;
     if (json != null) {
       _branchInfoConverter ??= BranchInfoConverter();
-      locator =
-          BranchLocator(_branchInfoConverter.fromJson(json), json['distance']);
+      locator = BranchLocator(_branchInfoConverter.fromJson(json), json['distance']);
     }
     return locator;
   }

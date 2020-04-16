@@ -7,9 +7,7 @@ class BranchTypeConverter extends JsonConverter<BranchType> {
   BranchType fromJson(Map<String, dynamic> json) {
     BranchType branchType;
     if (json != null) {
-      branchType = BranchType(
-          BranchFormatExtension.fromString(json['short_name']),
-          json['description']);
+      branchType = BranchType(BranchFormatExtension.fromString(json['short_name']), json['description']);
     }
     return branchType;
   }

@@ -73,8 +73,7 @@ void main() {
 
 void requestResponseTest(JustinService service) async {
   var converter = BranchTypeConverter();
-  var response =
-      await service.getResponseDirect(Endpoint.branchTypes, converter);
+  var response = await service.getResponseDirect(Endpoint.branchTypes, converter);
 
   expect(response, isNotNull);
   expect(response.status, 1);

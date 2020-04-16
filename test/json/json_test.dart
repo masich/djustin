@@ -25,8 +25,7 @@ void responseBranchTypeTest() {
   Response<BranchType> response;
 
   setUp(() {
-    response = ResponseConverter(BranchTypeConverter())
-        .fromJsonString(branchTypeRawJson);
+    response = ResponseConverter(BranchTypeConverter()).fromJsonString(branchTypeRawJson);
   });
 
   test('BranchType json response test', () {
@@ -48,8 +47,7 @@ void responseNullResultTest() {
   Response response;
 
   setUp(() {
-    response =
-        ResponseConverter(null).fromJsonString(responseNullResultRawJson);
+    response = ResponseConverter(null).fromJsonString(responseNullResultRawJson);
   });
 
   test('Response null result test', () {
@@ -69,8 +67,7 @@ void responseBranchTest() {
   Response<Branch> response;
 
   setUp(() {
-    response =
-        ResponseConverter(BranchConverter()).fromJsonString(branchRawJson);
+    response = ResponseConverter(BranchConverter()).fromJsonString(branchRawJson);
   });
 
   test('Branch json response test', () {
@@ -90,14 +87,11 @@ void responseBranchTest() {
     expect(branchFirst.branchInfo.latitude, '50.5025327');
     expect(branchFirst.branchInfo.longitude, '30.6051219');
     expect(branchFirst.branchInfo.description, 'Відділення 2');
-    expect(branchFirst.branchInfo.scheduleDescription,
-        'ПН-ПТ 10:00-19:00,СБ-НД 11:00-17:00');
+    expect(branchFirst.branchInfo.scheduleDescription, 'ПН-ПТ 10:00-19:00,СБ-НД 11:00-17:00');
 
     expect(branchFirst.photos.length, 2);
-    expect(branchFirst.photos[0],
-        Uri.parse('https://public.justin.ua/img/7467.JPG'));
-    expect(branchFirst.photos[1],
-        Uri.parse('https://public.justin.ua/img/6883.jpg'));
+    expect(branchFirst.photos[0], Uri.parse('https://public.justin.ua/img/7467.JPG'));
+    expect(branchFirst.photos[1], Uri.parse('https://public.justin.ua/img/6883.jpg'));
 
     expect(branchFirst.servicesAvailability.length, 8);
     expect(branchFirst.servicesAvailability['monobank'], isTrue);
@@ -136,8 +130,7 @@ void responseTrackingTest() {
   Response<Tracking> response;
 
   setUp(() {
-    response = ResponseConverter(TrackingConverter())
-        .fromJsonString(responseTrackingRawJson);
+    response = ResponseConverter(TrackingConverter()).fromJsonString(responseTrackingRawJson);
   });
 
   test('Tracking json response test', () {
@@ -148,8 +141,7 @@ void responseTrackingTest() {
     expect(tracking, isNotNull);
 
     expect(tracking.orderNumber, 201810165);
-    expect(tracking.orderDescription,
-        'Замовлення клієнта 201810165 від 25.07.2018');
+    expect(tracking.orderDescription, 'Замовлення клієнта 201810165 від 25.07.2018');
     expect(tracking.dateTime, DateTime.parse('2019-02-27 10:20:51'));
     expect(tracking.status, 'Одержано');
     expect(tracking.departmentNumber, isEmpty);
@@ -161,8 +153,7 @@ void responseServicesInfoTest() {
   Response<ServiceInfo> response;
 
   setUp(() {
-    response = ResponseConverter(ServiceInfoConverter())
-        .fromJsonString(responseServicesInfoRawJson);
+    response = ResponseConverter(ServiceInfoConverter()).fromJsonString(responseServicesInfoRawJson);
   });
 
   test('Services json response test', () {
@@ -195,8 +186,7 @@ void responseLocalitiesTest() {
   Response<Locality> response;
 
   setUp(() {
-    response = ResponseConverter(LocalityConverter())
-        .fromJsonString(responseLocalitiesRawJson);
+    response = ResponseConverter(LocalityConverter()).fromJsonString(responseLocalitiesRawJson);
   });
 
   test('Localities json response test', () {
@@ -224,8 +214,7 @@ void responseBranchLocatorTest() {
   Response<BranchLocator> response;
 
   setUp(() {
-    response = ResponseConverter(BranchLocatorConverter())
-        .fromJsonString(responseBranchLocatorRawJson);
+    response = ResponseConverter(BranchLocatorConverter()).fromJsonString(responseBranchLocatorRawJson);
   });
 
   test('Branch locator json response test', () {
@@ -236,8 +225,7 @@ void responseBranchLocatorTest() {
     expect(locator, isNotNull);
 
     expect(locator.branchInfo.number, 258);
-    expect(locator.branchInfo.address,
-        'Київ, Січових Стрільців вул. , 37/41 (Сільпо)');
+    expect(locator.branchInfo.address, 'Київ, Січових Стрільців вул. , 37/41 (Сільпо)');
     expect(locator.branchInfo.locality, 'Київ');
     expect(locator.branchInfo.type, 'Відділення');
     expect(locator.branchInfo.format, BranchFormat.SMART);

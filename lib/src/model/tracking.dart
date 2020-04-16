@@ -8,8 +8,8 @@ class Tracking {
   final String departmentNumber;
   final String departmentAddress;
 
-  Tracking(this.orderNumber, this.orderDescription, this.dateTime, this.status,
-      this.departmentNumber, this.departmentAddress);
+  Tracking(this.orderNumber, this.orderDescription, this.dateTime, this.status, this.departmentNumber,
+      this.departmentAddress);
 
   @override
   String toString() {

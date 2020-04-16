@@ -15,8 +15,7 @@ class Locality {
   // jsonName: parent_title_ua, parent_title_en, parent_title_ru
   final Map<Language, String> parentTitle;
 
-  Locality(
-      this.uuid, this.scoatou, this.parentUuid, this.title, this.parentTitle);
+  Locality(this.uuid, this.scoatou, this.parentUuid, this.title, this.parentTitle);
 
   @override
   String toString() {

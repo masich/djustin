@@ -2,10 +2,8 @@ import 'package:djustin/src/model/common/locale.dart';
 import 'package:djustin/src/model/converter/json_converter.dart';
 import 'package:djustin/src/model/response.dart';
 
-class ResponseConverter<Result, ResultConverter extends JsonConverter<Result>>
-    extends JsonConverter<Response<Result>> {
-  ResponseConverter(JsonConverter<Result> resultConverter)
-      : _resultConverter = resultConverter;
+class ResponseConverter<Result, ResultConverter extends JsonConverter<Result>> extends JsonConverter<Response<Result>> {
+  ResponseConverter(JsonConverter<Result> resultConverter) : _resultConverter = resultConverter;
 
   final ResultConverter _resultConverter;
   ResponseMassageConverter _messageConverter;
@@ -14,9 +12,7 @@ class ResponseConverter<Result, ResultConverter extends JsonConverter<Result>>
     var resultsJson = json?.map((e) => e as Map<String, dynamic>);
     List<Result> results;
     if (resultsJson != null) {
-      results = resultsJson
-          .map((resultJson) => _resultConverter.fromJson(resultJson))
-          ?.toList();
+      results = resultsJson.map((resultJson) => _resultConverter.fromJson(resultJson))?.toList();
     }
     return results;
   }
@@ -27,9 +23,7 @@ class ResponseConverter<Result, ResultConverter extends JsonConverter<Result>>
     if (json != null) {
       _messageConverter ??= ResponseMassageConverter();
       response = Response<Result>(
-          json['status'],
-          _messageConverter.fromJson(json['msg']),
-          _parseResults(json['result'] as List<dynamic>));
+          json['status'], _messageConverter.fromJson(json['msg']), _parseResults(json['result'] as List<dynamic>));
     }
     return response;
   }
@@ -40,11 +34,8 @@ class ResponseMassageConverter extends JsonConverter<ResponseMessage> {
   ResponseMessage fromJson(Map<String, dynamic> json) {
     ResponseMessage message;
     if (json != null) {
-      message = ResponseMessage(json['code'], {
-        Language.UA: json['ua'],
-        Language.EN: json['en'],
-        Language.RU: json['ru']
-      });
+      message =
+          ResponseMessage(json['code'], {Language.UA: json['ua'], Language.EN: json['en'], Language.RU: json['ru']});
     }
     return message;
   }

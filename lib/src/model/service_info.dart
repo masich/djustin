@@ -19,8 +19,8 @@ class ServiceInfo {
   // jsonName: send_service
   final bool hasSendService;
 
-  ServiceInfo(this.id, this.name, this.description, this.alias, this.hasSelfService,
-      this.hasCategoryService, this.hasSendService);
+  ServiceInfo(this.id, this.name, this.description, this.alias, this.hasSelfService, this.hasCategoryService,
+      this.hasSendService);
 
   @override
   String toString() {
