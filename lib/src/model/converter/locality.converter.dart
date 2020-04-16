@@ -7,16 +7,8 @@ class LocalityConverter extends JsonConverter<Locality> {
   Locality fromJson(Map<String, dynamic> json) {
     Locality locality;
     if (json != null && json.isNotEmpty) {
-      var title = <Language, String>{
-        Language.UA: json['title_ua'],
-        Language.EN: json['title_en'],
-        Language.RU: json['title_ru']
-      };
-      var parentTitle = <Language, String>{
-        Language.UA: json['parent_title_ua'],
-        Language.EN: json['parent_title_en'],
-        Language.RU: json['parent_title_ru']
-      };
+      var title = Locale.parseLocalizedText('title_', json);
+      var parentTitle = Locale.parseLocalizedText('parent_title_', json);
 
       locality = Locality(json['uuid'], json['SCOATOU'], json['parent_uuid'], title, parentTitle);
     }

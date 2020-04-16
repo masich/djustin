@@ -35,16 +35,8 @@ class PublicInfoConverter extends JsonConverter<PublicInfo> {
   PublicInfo fromJson(Map<String, dynamic> json) {
     PublicInfo publicInfo;
     if (json != null) {
-      var description = <Language, String>{
-        Language.UA: json['public_description_ua'],
-        Language.EN: json['public_description_en'],
-        Language.RU: json['public_description_ru']
-      };
-      var navigation = <Language, String>{
-        Language.UA: json['navigation_ua'],
-        Language.EN: json['navigation_en'],
-        Language.RU: json['navigation_ru']
-      };
+      var description = Locale.parseLocalizedText('public_description_', json);
+      var navigation = Locale.parseLocalizedText('navigation_', json);
       publicInfo = PublicInfo(description, navigation);
     }
     return publicInfo;

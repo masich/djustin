@@ -126,9 +126,9 @@ void requestErrorDefaultHandlerTest(JustinService service) {
     await service.getTrackingHistory('error');
   },
       prints("Justin response contains an error. Status: \'0\'; Message: "
-          "\'ResponseMessage { code: 10304, text: {Language.UA: Не вдалося знайти "
+          "\'ResponseMessage {code: 10304, text: {Language.UA: Не вдалося знайти "
           'відправлення, Language.EN: Could not find the shipment, Language.RU: Не '
-          "удалось найти отправление} }\'\n"));
+          "удалось найти отправление}}\'\n"));
 }
 
 void requestBranchTypesTest(JustinService service) async {

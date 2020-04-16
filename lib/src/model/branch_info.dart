@@ -29,7 +29,7 @@ class BranchInfo {
 
   @override
   String toString() {
-    return 'BranchInfo { '
+    return 'BranchInfo {'
         'number: $number, '
         'address: $address, '
         'locality: $locality, '

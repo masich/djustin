@@ -24,17 +24,17 @@ void modelNullResultTest() {
     response = ResponseConverter(null).fromJsonString(responseNullResultRawJson);
   });
   test('Model null response test', () {
-    var expectedString = 'Response { '
+    var expectedString = 'Response {'
         'status: 0, '
-        'message: ResponseMessage { '
+        'message: ResponseMessage {'
         'code: 10104, '
         'text: {'
         'Language.UA: Відділення з вказаним номером не знайдено, '
         'Language.EN: Branch with the specified number not found, '
         'Language.RU: Отделение с указанным номером не найдено'
-        '} '
-        '},'
-        ' results: null '
+        '}'
+        '}, '
+        'results: null'
         '}';
     expect(response.toString(), expectedString);
   });
@@ -48,11 +48,11 @@ void modelBranchTypeTest() {
   });
 
   test('Model branch type test', () {
-    var expectedString = 'BranchType { '
+    var expectedString = 'BranchType {'
         'format: SMART, '
         'description: SMART – відділення, у якому здійснюється приймання/видача '
         'відправлення вагою не більше ніж 15 кг та з максимальною довжиною '
-        'однієї зі сторін не більше ніж 90 см. '
+        'однієї зі сторін не більше ніж 90 см.'
         '}';
     expect(response.results.first.toString(), expectedString);
   });
@@ -66,8 +66,8 @@ void modelBranchTest() {
   });
 
   test('Model branch test', () {
-    var expectedString = 'Branch { '
-        'branchInfo: BranchInfo { '
+    var expectedString = 'Branch {'
+        'branchInfo: BranchInfo {'
         'number: 2, '
         'address: Київ, Драйзера вул., 8  (Сільпо), '
         'locality: Київ, '
@@ -107,8 +107,8 @@ void modelBranchTest() {
         "left of ''Silpo'', "
         'Language.RU: Отдельное здание, вход с ул. Теодора Драйзера, '
         "слева от ''Сильпо''"
-        '} '
-        '} '
+        '}'
+        '}'
         '}';
     expect(response.results.first.toString(), expectedString);
   });
@@ -122,13 +122,13 @@ void modelTrackingTest() {
   });
 
   test('Model tracking test', () {
-    var expectedString = 'Tracking { '
+    var expectedString = 'Tracking {'
         'orderNumber: 201810165, '
         'orderDescription: Замовлення клієнта 201810165 від 25.07.2018, '
         'dateTime: 2019-02-27 10:20:51.000, '
         'status: Одержано, '
         'departmentNumber: , '
-        'departmentAddress:  '
+        'departmentAddress: '
         '}';
     expect(response.results.first.toString(), expectedString);
   });
@@ -142,7 +142,7 @@ void modelServiceInfoTest() {
   });
 
   test('Model service info test', () {
-    var expectedString = 'ServiceInfo { '
+    var expectedString = 'ServiceInfo {'
         'id: monobank, '
         'name: {'
         'Language.UA: Картка "Монобанк", '
@@ -157,7 +157,7 @@ void modelServiceInfoTest() {
         'alias: monobank, '
         'hasSelfService: false, '
         'hasCategoryService: true, '
-        'hasSendService: true '
+        'hasSendService: true'
         '}';
     expect(response.results.first.toString(), expectedString);
   });
@@ -171,7 +171,7 @@ void modelLocalitiesTest() {
   });
 
   test('Model locality test', () {
-    var expectedString = 'Locality { '
+    var expectedString = 'Locality {'
         'uuid: 82362067-dc04-11e7-80c6-00155dfbfb00, '
         'scoatou: 3510300000, '
         'parentUuid: 17bc2896-dbfe-11e7-80c6-00155dfbfb00, '
@@ -184,7 +184,7 @@ void modelLocalitiesTest() {
         'Language.UA: Кіровоградська, '
         'Language.EN: , '
         'Language.RU: Кировоградская'
-        '} '
+        '}'
         '}';
     expect(response.results.first.toString(), expectedString);
   });
@@ -198,8 +198,8 @@ void modelBranchLocatorTest() {
   });
 
   test('Model branch locator test', () {
-    var expectedString = 'BranchLocator { '
-        'branchInfo: BranchInfo { '
+    var expectedString = 'BranchLocator {'
+        'branchInfo: BranchInfo {'
         'number: 258, '
         'address: Київ, Січових Стрільців вул. , 37/41 (Сільпо), '
         'locality: Київ, type: Відділення, '
@@ -211,7 +211,7 @@ void modelBranchLocatorTest() {
         'description: Відділення №258, '
         'scheduleDescription: ПН-НД 08-20'
         '}, '
-        'distance: 1.33 '
+        'distance: 1.33'
         '}';
     expect(response.results.first.toString(), expectedString);
   });

@@ -9,9 +9,9 @@ class BranchLocator {
 
   @override
   String toString() {
-    return 'BranchLocator { '
+    return 'BranchLocator {'
         'branchInfo: $branchInfo, '
-        'distance: $distance '
+        'distance: $distance'
         '}';
   }
 }

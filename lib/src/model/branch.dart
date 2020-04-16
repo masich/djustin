@@ -17,11 +17,11 @@ class Branch {
 
   @override
   String toString() {
-    return 'Branch { '
+    return 'Branch {'
         'branchInfo: $branchInfo, '
         'photos: $photos, '
         'servicesAvailability: $servicesAvailability, '
-        'publicInfo: $publicInfo '
+        'publicInfo: $publicInfo'
         '}';
   }
 }
@@ -39,7 +39,7 @@ class PublicInfo {
   String toString() {
     return 'PublicInfo {'
         'description: $description, '
-        'navigation: $navigation '
+        'navigation: $navigation'
         '}';
   }
 }

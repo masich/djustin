@@ -24,14 +24,14 @@ class ServiceInfo {
 
   @override
   String toString() {
-    return 'ServiceInfo { '
+    return 'ServiceInfo {'
         'id: $id, '
         'name: $name, '
         'description: $description, '
         'alias: $alias, '
         'hasSelfService: $hasSelfService, '
         'hasCategoryService: $hasCategoryService, '
-        'hasSendService: $hasSendService '
+        'hasSendService: $hasSendService'
         '}';
   }
 }

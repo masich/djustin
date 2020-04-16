@@ -13,13 +13,13 @@ class Tracking {
 
   @override
   String toString() {
-    return 'Tracking { '
+    return 'Tracking {'
         'orderNumber: $orderNumber, '
         'orderDescription: $orderDescription, '
         'dateTime: $dateTime, '
         'status: $status, '
         'departmentNumber: $departmentNumber, '
-        'departmentAddress: $departmentAddress '
+        'departmentAddress: $departmentAddress'
         '}';
   }
 }
