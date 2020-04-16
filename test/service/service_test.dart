@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:djustin/converters.dart';
 import 'package:djustin/djustin.dart';
+import 'package:djustin/src/service/justin_endpoints.dart' as endpoints;
 import 'package:test/test.dart';
 
 void main() {
@@ -73,7 +74,7 @@ void main() {
 
 void requestResponseTest(JustinService service) async {
   var converter = BranchTypeConverter();
-  var response = await service.getResponseDirect(Endpoint.branchTypes, converter);
+  var response = await service.getResponseDirect(endpoints.justinBranchTypes, converter);
 
   expect(response, isNotNull);
   expect(response.status, 1);

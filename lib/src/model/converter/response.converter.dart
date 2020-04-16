@@ -3,40 +3,25 @@ import 'package:djustin/src/model/converter/json_converter.dart';
 import 'package:djustin/src/model/response.dart';
 
 class ResponseConverter<Result, ResultConverter extends JsonConverter<Result>> extends JsonConverter<Response<Result>> {
-  ResponseConverter(JsonConverter<Result> resultConverter) : _resultConverter = resultConverter;
+  ResponseConverter(this._resultConverter);
 
-  final ResultConverter _resultConverter;
+  final JsonConverter<Result> _resultConverter;
   ResponseMassageConverter _messageConverter;
 
   List<Result> _parseResults(List<dynamic> json) {
-    var resultsJson = json?.map((e) => e as Map<String, dynamic>);
-    List<Result> results;
-    if (resultsJson != null) {
-      results = resultsJson.map((resultJson) => _resultConverter.fromJson(resultJson))?.toList();
-    }
-    return results;
+    return json == null ? null : json.map((resultJson) => _resultConverter.fromJson(resultJson))?.toList();
   }
 
   @override
-  Response<Result> fromJson(Map<String, dynamic> json) {
-    Response response;
-    if (json != null) {
-      _messageConverter ??= ResponseMassageConverter();
-      response = Response<Result>(
-          json['status'], _messageConverter.fromJson(json['msg']), _parseResults(json['result'] as List<dynamic>));
-    }
-    return response;
+  Response<Result> fromNotBlankJson(Map<String, dynamic> json) {
+    _messageConverter ??= ResponseMassageConverter();
+    return Response(json['status'], _messageConverter.fromJson(json['msg']), _parseResults(json['result']));
   }
 }
 
 class ResponseMassageConverter extends JsonConverter<ResponseMessage> {
   @override
-  ResponseMessage fromJson(Map<String, dynamic> json) {
-    ResponseMessage message;
-    if (json != null) {
-      message =
-          ResponseMessage(json['code'], {Language.UA: json['ua'], Language.EN: json['en'], Language.RU: json['ru']});
-    }
-    return message;
+  ResponseMessage fromNotBlankJson(Map<String, dynamic> json) {
+    return ResponseMessage(json['code'], Locale.parseLocalizedText('', json));
   }
 }

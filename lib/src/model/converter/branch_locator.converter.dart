@@ -7,12 +7,8 @@ class BranchLocatorConverter extends JsonConverter<BranchLocator> {
   BranchInfoConverter _branchInfoConverter;
 
   @override
-  BranchLocator fromJson(Map<String, dynamic> json) {
-    BranchLocator locator;
-    if (json != null) {
-      _branchInfoConverter ??= BranchInfoConverter();
-      locator = BranchLocator(_branchInfoConverter.fromJson(json), json['distance']);
-    }
-    return locator;
+  BranchLocator fromNotBlankJson(Map<String, dynamic> json) {
+    _branchInfoConverter ??= BranchInfoConverter();
+    return BranchLocator(_branchInfoConverter.fromJson(json), json['distance']);
   }
 }
