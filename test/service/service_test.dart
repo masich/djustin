@@ -73,8 +73,8 @@ void main() {
 }
 
 void requestResponseTest(JustinService service) async {
-  var converter = BranchTypeConverter();
-  var response = await service.getResponseDirect(endpoints.justinBranchTypes, converter);
+  final converter = BranchTypeConverter();
+  final response = await service.getResponseDirect(endpoints.justinBranchTypes, converter);
 
   expect(response, isNotNull);
   expect(response.status, 1);
@@ -84,7 +84,7 @@ void requestResponseTest(JustinService service) async {
 }
 
 void requestErrorTest(JustinService service) async {
-  var response = await service.getResponseDirect('/error_error', null);
+  final response = await service.getResponseDirect('/error_error', null);
 
   expect(response, isNotNull);
   expect(response.status, 0);
@@ -93,9 +93,9 @@ void requestErrorTest(JustinService service) async {
 }
 
 void requestHttpErrorHandlerTest() async {
-  var service = Service(endpointBase: 'https://httpstat.us/404');
+  final service = Service(endpointBase: 'https://httpstat.us/404');
   var statusCode;
-  var response = await service.getResponse('', null, onHttpError: (code, _) {
+  final response = await service.getResponse('', null, onHttpError: (code, _) {
     statusCode = code;
   });
 
@@ -106,7 +106,7 @@ void requestHttpErrorHandlerTest() async {
 
 void requestErrorHandlerTest(JustinService service) async {
   var statusCode;
-  var response = await service.getTrackingHistory('error', onError: (code, _) {
+  final response = await service.getTrackingHistory('error', onError: (code, _) {
     statusCode = code;
   });
 
@@ -133,7 +133,7 @@ void requestErrorDefaultHandlerTest(JustinService service) {
 }
 
 void requestBranchTypesTest(JustinService service) async {
-  var response = await service.getBranchTypesResponse();
+  final response = await service.getBranchTypesResponse();
 
   expect(response, isNotNull);
   expect(response.status, 1);
@@ -143,14 +143,14 @@ void requestBranchTypesTest(JustinService service) async {
 }
 
 void responseBranchTypesTest(JustinService service) async {
-  var branchTypes = await service.getBranchTypes();
+  final branchTypes = await service.getBranchTypes();
 
   expect(branchTypes, isNotNull);
   expect(branchTypes.length, greaterThanOrEqualTo(3));
 }
 
 void requestTrackingTest(JustinService service) async {
-  var response = await service.getTrackingResponse('201810165');
+  final response = await service.getTrackingResponse('201810165');
 
   expect(response, isNotNull);
   expect(response.status, 1);
@@ -160,13 +160,13 @@ void requestTrackingTest(JustinService service) async {
 }
 
 void responseTrackingTest(JustinService service) async {
-  var tracking = await service.getTracking('201810165');
+  final tracking = await service.getTracking('201810165');
 
   expect(tracking, isNotNull);
 }
 
 void requestTrackingHistoryTest(JustinService service) async {
-  var response = await service.getTrackingHistoryResponse('201810165');
+  final response = await service.getTrackingHistoryResponse('201810165');
 
   expect(response, isNotNull);
   expect(response.status, 1);
@@ -176,14 +176,14 @@ void requestTrackingHistoryTest(JustinService service) async {
 }
 
 void responseTrackingHistoryTest(JustinService service) async {
-  var history = await service.getTrackingHistory('201810165');
+  final history = await service.getTrackingHistory('201810165');
 
   expect(history, isNotNull);
   expect(history.length, 6);
 }
 
 void requestLocalitiesAllTest(JustinService service) async {
-  var response = await service.getLocalitiesAllResponse();
+  final response = await service.getLocalitiesAllResponse();
 
   expect(response, isNotNull);
   expect(response.status, 1);
@@ -193,14 +193,14 @@ void requestLocalitiesAllTest(JustinService service) async {
 }
 
 void responseLocalitiesAllTest(JustinService service) async {
-  var localities = await service.getLocalitiesAll();
+  final localities = await service.getLocalitiesAll();
 
   expect(localities, isNotNull);
   expect(localities.length, greaterThan(1));
 }
 
 void requestLocalitiesActiveTest(JustinService service) async {
-  var response = await service.getLocalitiesActiveResponse();
+  final response = await service.getLocalitiesActiveResponse();
 
   expect(response, isNotNull);
   expect(response.status, 1);
@@ -210,14 +210,14 @@ void requestLocalitiesActiveTest(JustinService service) async {
 }
 
 void responseLocalitiesActiveTest(JustinService service) async {
-  var localities = await service.getLocalitiesActive();
+  final localities = await service.getLocalitiesActive();
 
   expect(localities, isNotNull);
   expect(localities.length, greaterThanOrEqualTo(0));
 }
 
 void requestServicesInfoTest(JustinService service) async {
-  var response = await service.getServicesInfoResponse();
+  final response = await service.getServicesInfoResponse();
 
   expect(response, isNotNull);
   expect(response.status, 1);
@@ -227,14 +227,14 @@ void requestServicesInfoTest(JustinService service) async {
 }
 
 void responseServicesInfoTest(JustinService service) async {
-  var info = await service.getServicesInfo();
+  final info = await service.getServicesInfo();
 
   expect(info, isNotNull);
   expect(info.length, greaterThan(0));
 }
 
 void requestBranchesAllTest(JustinService service) async {
-  var response = await service.getBranchesAllResponse();
+  final response = await service.getBranchesAllResponse();
 
   expect(response, isNotNull);
   expect(response.status, 1);
@@ -244,14 +244,14 @@ void requestBranchesAllTest(JustinService service) async {
 }
 
 void responseBranchesAllTest(JustinService service) async {
-  var branches = await service.getBranchesAll();
+  final branches = await service.getBranchesAll();
 
   expect(branches, isNotNull);
   expect(branches.length, greaterThan(0));
 }
 
 void requestBranchTest(JustinService service) async {
-  var response = await service.getBranchResponse(220);
+  final response = await service.getBranchResponse(220);
 
   expect(response, isNotNull);
   expect(response.status, 1);
@@ -261,13 +261,13 @@ void requestBranchTest(JustinService service) async {
 }
 
 void responseBranchTest(JustinService service) async {
-  var branch = await service.getBranch(220);
+  final branch = await service.getBranch(220);
 
   expect(branch, isNotNull);
 }
 
 void requestBranchesTest(JustinService service) async {
-  var response = await service.getBranchesResponse('Kyiv');
+  final response = await service.getBranchesResponse('Kyiv');
 
   expect(response, isNotNull);
   expect(response.status, 1);
@@ -277,14 +277,14 @@ void requestBranchesTest(JustinService service) async {
 }
 
 void responseBranchesTest(JustinService service) async {
-  var branches = await service.getBranches('Kyiv');
+  final branches = await service.getBranches('Kyiv');
 
   expect(branches, isNotNull);
   expect(branches.length, greaterThanOrEqualTo(0));
 }
 
 void requestBranchLocatorsTest(JustinService service) async {
-  var response = await service.getBranchLocatorsResponse('Kyiv,Shevchenka,30');
+  final response = await service.getBranchLocatorsResponse('Kyiv,Shevchenka,30');
 
   expect(response, isNotNull);
   expect(response.status, 1);
@@ -294,7 +294,7 @@ void requestBranchLocatorsTest(JustinService service) async {
 }
 
 void responseBranchLocatorsTest(JustinService service) async {
-  var locators = await service.getBranchLocators('Kyiv,Shevchenka,30');
+  final locators = await service.getBranchLocators('Kyiv,Shevchenka,30');
 
   expect(locators, isNotNull);
   expect(locators.length, greaterThanOrEqualTo(0));

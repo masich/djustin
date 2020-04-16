@@ -14,6 +14,7 @@ void main() {
     modelServiceInfoTest();
     modelLocalitiesTest();
     modelBranchLocatorTest();
+    localeStringTest();
   });
 }
 
@@ -24,7 +25,7 @@ void modelNullResultTest() {
     response = ResponseConverter(null).fromJsonString(responseNullResultRawJson);
   });
   test('Model null response test', () {
-    var expectedString = 'Response {'
+    const expectedString = 'Response {'
         'status: 0, '
         'message: ResponseMessage {'
         'code: 10104, '
@@ -48,7 +49,7 @@ void modelBranchTypeTest() {
   });
 
   test('Model branch type test', () {
-    var expectedString = 'BranchType {'
+    const expectedString = 'BranchType {'
         'format: SMART, '
         'description: SMART – відділення, у якому здійснюється приймання/видача '
         'відправлення вагою не більше ніж 15 кг та з максимальною довжиною '
@@ -66,7 +67,7 @@ void modelBranchTest() {
   });
 
   test('Model branch test', () {
-    var expectedString = 'Branch {'
+    const expectedString = 'Branch {'
         'branchInfo: BranchInfo {'
         'number: 2, '
         'address: Київ, Драйзера вул., 8  (Сільпо), '
@@ -122,7 +123,7 @@ void modelTrackingTest() {
   });
 
   test('Model tracking test', () {
-    var expectedString = 'Tracking {'
+    const expectedString = 'Tracking {'
         'orderNumber: 201810165, '
         'orderDescription: Замовлення клієнта 201810165 від 25.07.2018, '
         'dateTime: 2019-02-27 10:20:51.000, '
@@ -142,7 +143,7 @@ void modelServiceInfoTest() {
   });
 
   test('Model service info test', () {
-    var expectedString = 'ServiceInfo {'
+    const expectedString = 'ServiceInfo {'
         'id: monobank, '
         'name: {'
         'Language.UA: Картка "Монобанк", '
@@ -171,7 +172,7 @@ void modelLocalitiesTest() {
   });
 
   test('Model locality test', () {
-    var expectedString = 'Locality {'
+    const expectedString = 'Locality {'
         'uuid: 82362067-dc04-11e7-80c6-00155dfbfb00, '
         'scoatou: 3510300000, '
         'parentUuid: 17bc2896-dbfe-11e7-80c6-00155dfbfb00, '
@@ -198,7 +199,7 @@ void modelBranchLocatorTest() {
   });
 
   test('Model branch locator test', () {
-    var expectedString = 'BranchLocator {'
+    const expectedString = 'BranchLocator {'
         'branchInfo: BranchInfo {'
         'number: 258, '
         'address: Київ, Січових Стрільців вул. , 37/41 (Сільпо), '
@@ -214,5 +215,15 @@ void modelBranchLocatorTest() {
         'distance: 1.33'
         '}';
     expect(response.results.first.toString(), expectedString);
+  });
+}
+
+void localeStringTest() {
+  test('Locale string locator test', () {
+    const expectedString = 'ua';
+    expect(Language.UA.string(), expectedString);
+
+    const expectedLanguage = Language.UA;
+    expect(Locale.fromString('ua'), expectedLanguage);
   });
 }
