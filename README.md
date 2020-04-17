@@ -36,7 +36,7 @@ First, add the following dependency to your ```pubspec.yaml```:
 
 ```yaml
 dependencies:
-  djustin: ^0.2.0
+  djustin: ^0.2.1
 ```
 
 Then import the library:
