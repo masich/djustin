@@ -1,6 +1,6 @@
 import 'package:djustin/djustin.dart';
 
-void main() async {
+Future<void> main() async {
   // Initiate Service for Justin OpenAPI
   var service = JustinService();
 
@@ -28,7 +28,7 @@ void main() async {
   service.close();
 }
 
-/// Simple example that prints tracking info form Justin OpenAPI
+/// Simple example that prints tracking info using response form Justin OpenAPI
 /// for a given `trackingNumber`
 void printBranch(JustinService service, int branchNumber) async {
   // Request info about branch with a `branchNumber` number
@@ -43,7 +43,7 @@ void printBranch(JustinService service, int branchNumber) async {
   }
 }
 
-/// Simple example that prints tracking info form Justin OpenAPI
+/// Simple example that prints tracking info using response form Justin OpenAPI
 /// for a given `trackingNumber`
 void printTracking(JustinService service, String trackingNumber) async {
   // Make a request for a tracking info
