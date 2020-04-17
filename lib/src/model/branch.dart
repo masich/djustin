@@ -13,7 +13,8 @@ class Branch {
   // jsonName: 'public'
   final PublicInfo publicInfo;
 
-  Branch(this.branchInfo, this.photos, this.servicesAvailability, this.publicInfo);
+  Branch(
+      this.branchInfo, this.photos, this.servicesAvailability, this.publicInfo);
 
   @override
   String toString() {

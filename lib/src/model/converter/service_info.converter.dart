@@ -13,7 +13,13 @@ class ServiceInfoConverter extends JsonConverter<ServiceInfo> {
     final name = Locale.parseLocalizedText('name_', json);
     final description = Locale.parseLocalizedText('description_', json);
 
-    return ServiceInfo(id, name, description, json['alias'], json['self_service'] == _serviceTrue,
-        json['category_service'] == _serviceTrue, json['send_service'] == _serviceTrue);
+    return ServiceInfo(
+        id,
+        name,
+        description,
+        json['alias'],
+        json['self_service'] == _serviceTrue,
+        json['category_service'] == _serviceTrue,
+        json['send_service'] == _serviceTrue);
   }
 }

@@ -19,13 +19,14 @@ class Service {
       : _endpointBase = endpointBase ?? '',
         _client = client ?? http.Client();
 
-  Future<http.Response> getHttpResponse(String endpoint, {Map<String, String> headers}) {
+  Future<http.Response> getHttpResponse(String endpoint,
+      {Map<String, String> headers}) {
     endpoint ??= '';
     return _client.get(Uri.parse(endpointBase + endpoint), headers: headers);
   }
 
-  Future<Response<ResultType>> getResponse<ResultType>(
-      String endpoint, ResponseConverter<ResultType, JsonConverter<ResultType>> converter,
+  Future<Response<ResultType>> getResponse<ResultType>(String endpoint,
+      ResponseConverter<ResultType, JsonConverter<ResultType>> converter,
       {OnHttpErrorCallback onHttpError, Map<String, String> headers}) async {
     var httpResponse = await getHttpResponse(endpoint, headers: headers);
     Response<ResultType> response;
@@ -39,9 +40,11 @@ class Service {
     return response;
   }
 
-  Future<Response<ResultType>> getResponseDirect<ResultType>(String endpoint, JsonConverter<ResultType> converter,
+  Future<Response<ResultType>> getResponseDirect<ResultType>(
+      String endpoint, JsonConverter<ResultType> converter,
       {OnHttpErrorCallback onHttpError, Map<String, String> headers}) {
-    return getResponse(endpoint, ResponseConverter(converter), onHttpError: onHttpError, headers: headers);
+    return getResponse(endpoint, ResponseConverter(converter),
+        onHttpError: onHttpError, headers: headers);
   }
 
   void close() {

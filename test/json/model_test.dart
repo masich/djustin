@@ -22,7 +22,8 @@ void modelNullResultTest() {
   Response response;
 
   setUp(() {
-    response = ResponseConverter(null).fromJsonString(responseNullResultRawJson);
+    response =
+        ResponseConverter(null).fromJsonString(responseNullResultRawJson);
   });
   test('Model null response test', () {
     const expectedString = 'Response {'
@@ -45,7 +46,8 @@ void modelBranchTypeTest() {
   Response<BranchType> response;
 
   setUp(() {
-    response = ResponseConverter(BranchTypeConverter()).fromJsonString(branchTypeRawJson);
+    response = ResponseConverter(BranchTypeConverter())
+        .fromJsonString(branchTypeRawJson);
   });
 
   test('Model branch type test', () {
@@ -63,7 +65,8 @@ void modelBranchTest() {
   Response<Branch> response;
 
   setUp(() {
-    response = ResponseConverter(BranchConverter()).fromJsonString(branchRawJson);
+    response =
+        ResponseConverter(BranchConverter()).fromJsonString(branchRawJson);
   });
 
   test('Model branch test', () {
@@ -119,7 +122,8 @@ void modelTrackingTest() {
   Response<Tracking> response;
 
   setUp(() {
-    response = ResponseConverter(TrackingConverter()).fromJsonString(responseTrackingRawJson);
+    response = ResponseConverter(TrackingConverter())
+        .fromJsonString(responseTrackingRawJson);
   });
 
   test('Model tracking test', () {
@@ -139,7 +143,8 @@ void modelServiceInfoTest() {
   Response<ServiceInfo> response;
 
   setUp(() {
-    response = ResponseConverter(ServiceInfoConverter()).fromJsonString(responseServicesInfoRawJson);
+    response = ResponseConverter(ServiceInfoConverter())
+        .fromJsonString(responseServicesInfoRawJson);
   });
 
   test('Model service info test', () {
@@ -168,7 +173,8 @@ void modelLocalitiesTest() {
   Response<Locality> response;
 
   setUp(() {
-    response = ResponseConverter(LocalityConverter()).fromJsonString(responseLocalitiesRawJson);
+    response = ResponseConverter(LocalityConverter())
+        .fromJsonString(responseLocalitiesRawJson);
   });
 
   test('Model locality test', () {
@@ -195,7 +201,8 @@ void modelBranchLocatorTest() {
   Response<BranchLocator> response;
 
   setUp(() {
-    response = ResponseConverter(BranchLocatorConverter()).fromJsonString(responseBranchLocatorRawJson);
+    response = ResponseConverter(BranchLocatorConverter())
+        .fromJsonString(responseBranchLocatorRawJson);
   });
 
   test('Model branch locator test', () {

@@ -8,6 +8,7 @@ class LocalityConverter extends JsonConverter<Locality> {
     var title = Locale.parseLocalizedText('title_', json);
     var parentTitle = Locale.parseLocalizedText('parent_title_', json);
 
-    return Locality(json['uuid'], json['SCOATOU'], json['parent_uuid'], title, parentTitle);
+    return Locality(
+        json['uuid'], json['SCOATOU'], json['parent_uuid'], title, parentTitle);
   }
 }

@@ -24,8 +24,18 @@ class BranchInfo {
   // jsonName: 'shedule_description'
   final String scheduleDescription;
 
-  BranchInfo(this.number, this.address, this.locality, this.type, this.format, this.deliveryBranchId, this.maxWeight,
-      this.latitude, this.longitude, this.description, this.scheduleDescription);
+  BranchInfo(
+      this.number,
+      this.address,
+      this.locality,
+      this.type,
+      this.format,
+      this.deliveryBranchId,
+      this.maxWeight,
+      this.latitude,
+      this.longitude,
+      this.description,
+      this.scheduleDescription);
 
   @override
   String toString() {
