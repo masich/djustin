@@ -14,15 +14,19 @@ class BranchConverter extends JsonConverter<Branch> {
   }
 
   static Map<String, bool> _parseServices(Map<String, dynamic> services) {
-    return services?.map((service, availability) => MapEntry(service, availability == _serviceAvailable));
+    return services?.map((service, availability) =>
+        MapEntry(service, availability == _serviceAvailable));
   }
 
   @override
   Branch fromNotBlankJson(Map<String, dynamic> json) {
     _publicInfoConverter ??= PublicInfoConverter();
     _branchInfoConverter ??= BranchInfoConverter();
-    return Branch(_branchInfoConverter.fromJson(json), _parsePhotosUrls(json['photos']),
-        _parseServices(json['services']), _publicInfoConverter.fromJson(json['public']));
+    return Branch(
+        _branchInfoConverter.fromJson(json),
+        _parsePhotosUrls(json['photos']),
+        _parseServices(json['services']),
+        _publicInfoConverter.fromJson(json['public']));
   }
 }
 

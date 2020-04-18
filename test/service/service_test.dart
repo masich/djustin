@@ -74,7 +74,8 @@ void main() {
 
 void requestResponseTest(JustinService service) async {
   final converter = BranchTypeConverter();
-  final response = await service.getResponseDirect(endpoints.justinBranchTypes, converter);
+  final response =
+      await service.getResponseDirect(endpoints.justinBranchTypes, converter);
 
   expect(response, isNotNull);
   expect(response.status, 1);
@@ -106,7 +107,8 @@ void requestHttpErrorHandlerTest() async {
 
 void requestErrorHandlerTest(JustinService service) async {
   var statusCode;
-  final response = await service.getTrackingHistory('error', onError: (code, _) {
+  final response =
+      await service.getTrackingHistory('error', onError: (code, _) {
     statusCode = code;
   });
 
@@ -284,7 +286,8 @@ void responseBranchesTest(JustinService service) async {
 }
 
 void requestBranchLocatorsTest(JustinService service) async {
-  final response = await service.getBranchLocatorsResponse('Kyiv,Shevchenka,30');
+  final response =
+      await service.getBranchLocatorsResponse('Kyiv,Shevchenka,30');
 
   expect(response, isNotNull);
   expect(response.status, 1);

@@ -17,3 +17,6 @@
  result as well as response itself.*
 - Added ability to provide error handlers for justin and http errors.
  
+ ## 0.2.1
+ - Refactored code according to default dart code conversions.
+ 

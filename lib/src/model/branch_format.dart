@@ -13,7 +13,8 @@ extension BranchFormatExtension on BranchFormat {
     BranchFormat.SMART: 'SMART'
   };
 
-  static BranchFormat fromString(String value) => BranchFormatExtension._mapping.keyForValue(value);
+  static BranchFormat fromString(String value) =>
+      BranchFormatExtension._mapping.keyForValue(value);
 
   String string() => _mapping[this];
 }
